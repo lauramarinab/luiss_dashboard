@@ -4,9 +4,16 @@ class Prova extends Component {
   render() {
     return (
       <div>
-        <h1>Questa è una prova</h1>
-        <div className="prova__container">
-          <img src="" alt="" className="immagine" />
+        <div className="container">
+          <div className="child">
+            <h1 className="titolo">Questo titolo</h1>
+            <img src="" alt="" className="immagine" />
+          </div>
+          <div className="prova cavolo">
+            <img src="" alt="" />
+            <img src="" alt="" />
+            <img src="" alt="" />
+          </div>
         </div>
       </div>
     );
