@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 
-class Prova extends Component {
+export default class Prova extends Component {
   render() {
     return (
       <div>
-        <h1>Questa è una prova</h1>
+        <h1>Ciao</h1>
+        <div className="prova">
+          <img src="" alt="" />
+        </div>
       </div>
     );
   }
 }
-
-export default Prova;
