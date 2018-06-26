@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
-import Prova from './Components/Prova';
+import './css/App.css';
+import Logo from './components/Logo';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <Prova />
+      <div>
+        <Logo />
+        <p className="Officina__Sans">Prova Officina Sans</p>
+        <p className="Officina__Serif">Prova Officina Serif</p>
       </div>
     );
   }

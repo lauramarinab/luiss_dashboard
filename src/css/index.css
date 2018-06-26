@@ -1,0 +1,91 @@
+*,
+*::before,
+*::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/* Officina Sans STD */
+@font-face {
+  font-family: "Officina Sans STD";
+  src: url('./../font/ITCOfficinaSans/OfficinaSansStd-Bold.woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Officina Sans STD";
+  src: url('./../font/ITCOfficinaSans/OfficinaSansStd-BoldItalic.woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Officina Sans STD";
+  src: url('./../font/ITCOfficinaSans/OfficinaSansStd-Book.woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Officina Sans STD";
+  src: url('./../font/ITCOfficinaSans/OfficinaSansStd-BookItalic.woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Officina Serif STD */
+@font-face {
+  font-family: "Officina Serif STD";
+  src: url('./../font/ITCOfficinaSerif/OfficinaSerifStd-Bold.woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Officina Serif STD";
+  src: url('./../font/ITCOfficinaSerif/OfficinaSerifStd-BoldItalic.woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Officina Serif STD";
+  src: url('./../font/ITCOfficinaSerif/OfficinaSerifStd-Book.woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Officina Serif STD";
+  src: url('./../font/ITCOfficinaSerif/OfficinaSerifStd-BookItalic.woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+html {
+  font-family: "Officina Serif STD";
+  font-weight: 600;
+}
+
+#logo {
+  width: 180px;
+}
+
+.Officina__Sans {
+  font-family: "Officina Sans STD";
+  font-weight: 400;
+}
+
+.Officina__Serif {
+  font-family: "Officina Serif STD";
+  font-weight: 600;
+  font-style: italic;
+}
