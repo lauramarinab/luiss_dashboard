@@ -4,9 +4,16 @@ export default class Prova extends Component {
   render() {
     return (
       <div>
-        <h1>Ciao</h1>
-        <div className="prova">
-          <img src="" alt="" />
+        <div className="container">
+          <div className="child">
+            <h1 className="titolo">Questo titolo</h1>
+            <img src="" alt="" className="immagine" />
+          </div>
+          <div className="prova cavolo">
+            <img src="" alt="" />
+            <img src="" alt="" />
+            <img src="" alt="" />
+          </div>
         </div>
       </div>
     );
