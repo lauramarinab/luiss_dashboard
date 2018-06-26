@@ -1,0 +1,30 @@
+{
+  "name": "luiss_tag",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "prettier": "^1.11.1"
+  },
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4",
+    "ramda": "^0.25.0",
+    "react-router-dom": "^4.3.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
