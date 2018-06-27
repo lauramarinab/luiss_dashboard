@@ -3,6 +3,7 @@ import Select from './Select';
 import Modal from './Modal';
 import './../../css/modale.css';
 import './../../css/chart.css';
+import info from './../../img/info.svg';
 
 class Chart extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class Chart extends Component {
         <div className="chart__header">
           <h2 className="chart__title">Titolo</h2>
           <icon className="chart__incon-info" onClick={this.onModaleClick}>
-            i
+            <img src={info} alt="" className="icon-info" />
           </icon>
         </div>
         <div className="chart__action-bar">
