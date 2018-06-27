@@ -74,18 +74,3 @@ html {
   font-family: "Officina Serif STD";
   font-weight: 600;
 }
-
-#logo {
-  width: 180px;
-}
-
-.Officina__Sans {
-  font-family: "Officina Sans STD";
-  font-weight: 400;
-}
-
-.Officina__Serif {
-  font-family: "Officina Serif STD";
-  font-weight: 600;
-  font-style: italic;
-}
