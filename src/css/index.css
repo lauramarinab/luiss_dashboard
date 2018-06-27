@@ -6,6 +6,21 @@
   box-sizing: border-box;
 }
 
+:root {
+  --darkGrey: #303030;
+  --mediumGrey: #585858;
+  --lightGrey: #c1c1c1;
+  --moreLightGrey: #f7f7f7;
+  --denim: #6d7eb0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
 /* Officina Sans STD */
 @font-face {
   font-family: "Officina Sans STD";
@@ -71,21 +86,5 @@
 }
 
 html {
-  font-family: "Officina Serif STD";
-  font-weight: 600;
-}
-
-#logo {
-  width: 180px;
-}
-
-.Officina__Sans {
   font-family: "Officina Sans STD";
-  font-weight: 400;
-}
-
-.Officina__Serif {
-  font-family: "Officina Serif STD";
-  font-weight: 600;
-  font-style: italic;
 }

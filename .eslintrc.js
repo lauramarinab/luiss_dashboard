@@ -32,7 +32,11 @@ module.exports = {
                 "trailingComma": "es5",
                 "singleQuote": true
             }
-        ]    
+        ],
+        "jsx-a11y/anchor-is-valid": [ "error", {
+            "specialLink": [ "hrefLeft", "hrefRight" ],
+            "aspects": [ "noHref", "invalidHref", "preferButton" ]
+          }]    
     },
     "plugins": [
         "prettier"
