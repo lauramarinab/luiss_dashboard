@@ -1,0 +1,21 @@
+*,
+*::before,
+*::after {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+header{
+  height: 50px;
+  width: 100%;
+  background-color: gainsboro;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.icon-user {
+  width: 28px;
+  margin-right: 35px;
+}

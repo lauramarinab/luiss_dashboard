@@ -14,6 +14,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
+import Header from './components/Header';
 
 class App extends Component {
   componentDidMount() {
@@ -23,7 +24,9 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Header />
         <Sidebar />
+
         <Chart>
           <ResponsiveContainer
             width="60%"
