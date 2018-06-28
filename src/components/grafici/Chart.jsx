@@ -35,6 +35,7 @@ class Chart extends Component {
   }
 
   onModaleClick = e => this.mostraModale();
+
   setDateRange = e => {
     console.log(e);
     this.setState({ date: e.value });
@@ -55,19 +56,23 @@ class Chart extends Component {
           <Select />
           <div className="chart__action-select-date">
             <Calendar
+              minDate={new Date('2018-04-01')}
+              maxDate={new Date('2018-05-24')}
+              defaultDate={new Date('2018-04-01')}
+              readOnlyInput
               dateFormat="dd/mm/yy"
               selectionMode="range"
               value={this.state.date}
               onChange={e => this.setDateRange(e)}
-              // onChange={e => this.setState({ date: e.value })}
+            // onChange={e => this.setState({ date: e.value })}
             />
           </div>
         </div>
         {this.state.ModaleIn ? (
           <Modal nascondiModale={this.nascondiModale} />
         ) : (
-          false
-        )}
+            false
+          )}
 
         {this.props.children}
       </div>
