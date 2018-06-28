@@ -26,7 +26,7 @@
 }
 
 .navigation li {
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 li a {
@@ -87,6 +87,7 @@ li a {
 
 .icon-arrow {
   width: 13px;
+  transition: all 0.3s ease-in-out;
 }
 
 .bottone {
@@ -107,7 +108,7 @@ li a {
   top: 0;
   left: 0;
   bottom: 0;
-  width: 80px;
+  width: 75px;
   z-index: 300;
   display: flex;
   flex-direction: column;
@@ -124,4 +125,12 @@ li a {
 
 .sidebar__close .navigation__hashtag li {
   display: none;
+}
+
+.sidebar__close .navigation li {
+  margin-bottom: 50px;
+}
+
+.sidebar__close .bottone .icon-arrow {
+  transform: rotate(180deg);
 }

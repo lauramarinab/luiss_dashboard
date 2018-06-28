@@ -68,7 +68,7 @@ class Chart extends Component {
           false
         )}
 
-        {/* {this.props.children} */}
+        {this.props.children}
       </div>
     );
   }
