@@ -6,9 +6,9 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import moment from 'moment';
 import Modal from './Modal';
-import './../../css/modale.css';
 import './../../css/chart.css';
-import info from './../../img/info.svg';
+import infoIcon from './../../img/info.svg';
+import arrow from './../../img/arrow.svg';
 
 class Chart extends Component {
   constructor(props) {
@@ -17,6 +17,7 @@ class Chart extends Component {
       ModaleIn: false,
       inPage: false,
       date: null,
+      openSelect: true,
     };
 
     this.mostraModale = () => {
@@ -30,6 +31,12 @@ class Chart extends Component {
       this.setState({
         ModaleIn: !this.state.ModaleIn,
         inPage: false,
+      });
+    };
+
+    this.toggleSelect = () => {
+      this.setState({
+        openSelect: !this.state.openSelect,
       });
     };
   }
@@ -46,35 +53,52 @@ class Chart extends Component {
   render() {
     return (
       <div className="chart">
-        <div className="chart__header">
-          <h2 className="chart__title">Titolo</h2>
-          <icon className="chart__incon-info" onClick={this.onModaleClick}>
-            <img src={info} alt="" className="icon-info" />
-          </icon>
-        </div>
-        <div className="chart__action-bar">
-          <Select />
-          <div className="chart__action-select-date">
-            <Calendar
-              minDate={new Date('2018-04-01')}
-              maxDate={new Date('2018-05-24')}
-              defaultDate={new Date('2018-04-01')}
-              readOnlyInput
-              dateFormat="dd/mm/yy"
-              selectionMode="range"
-              value={this.state.date}
-              onChange={e => this.setDateRange(e)}
-            // onChange={e => this.setState({ date: e.value })}
-            />
-          </div>
-        </div>
         {this.state.ModaleIn ? (
           <Modal nascondiModale={this.nascondiModale} />
         ) : (
-            false
-          )}
+          false
+        )}
+        <div className="chart__header">
+          <h2 className="chart__title">{this.props.title}</h2>
+          <img
+            src={infoIcon}
+            alt=""
+            className="chart__icon-info"
+            onClick={this.onModaleClick}
+          />
+        </div>
+        <div className="chart-background">
+          <div className="chart__action-bar">
+            <div
+              className={
+                this.state.openSelect
+                  ? 'select__container__close'
+                  : 'select__container__open'
+              }
+              onClick={this.toggleSelect}
+            >
+              <span>ESEMPIO</span>
+              <ul className="select__ul">
+                <li className="select__li">Lorem</li>
+                <li className="select__li">Ipsum</li>
+                <li className="select__li">Ipsum</li>
+              </ul>
+              <img src={arrow} className="arrow__img" />
+            </div>
 
-        {this.props.children}
+            <div className="chart__action-select-date">
+              <Calendar
+                dateFormat="dd/mm/yy"
+                selectionMode="range"
+                value={this.state.date}
+                onChange={e => this.setDateRange(e)}
+                // onChange={e => this.setState({ date: e.value })}
+              />
+            </div>
+          </div>
+
+          {this.props.children}
+        </div>
       </div>
     );
   }

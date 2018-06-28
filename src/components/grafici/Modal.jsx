@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
+import close from './../../img/close.svg';
+import './../../css/modal.css';
 
 export default class Modal extends Component {
   render() {
     return (
-      <div className="wrapper">
-        <div className="header">
-          <h1>Place Holder info dettagli</h1>
-          <button className="button" onClick={this.props.nascondiModale}>
-            x
-          </button>
-        </div>
-        <div className="testo">
+      <div className="modal__wrapper">
+        <img
+          src={close}
+          alt=""
+          className="icon-close"
+          onClick={this.props.nascondiModale}
+        />
+
+        <div className="modal__testo">
+          <h3>Dettagli grafico</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim

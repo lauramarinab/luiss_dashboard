@@ -1,21 +1,13 @@
-*,
-*::before,
-*::after {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
-
-header{
-  height: 50px;
+header {
   width: 100%;
-  background-color: gainsboro;
+  height: 50px;
+  background-color: var(--denim);
   display: flex;
   justify-content: flex-end;
-  align-items: center;
 }
 
-.icon-user {
-  width: 28px;
-  margin-right: 35px;
+.account-icon {
+  width: 20px;
+  margin-right: 1rem;
+  filter: brightness(0) invert(1);
 }
