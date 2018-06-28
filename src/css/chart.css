@@ -1,12 +1,10 @@
-*,
-*::before,
-*::after {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
-
 .icon-info{
   width: 23px;
 }
 
+
+.chart {
+  position: absolute;
+  left: 300px;
+  top: 100px;
+}
