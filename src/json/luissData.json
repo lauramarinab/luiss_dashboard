@@ -1,0 +1,77 @@
+[
+  {
+    "day": "Sun, 01 Apr 2018 00:00:00 GMT",
+    "activity": 3,
+    "involvement": 15.666666666666666
+  },
+  {
+    "day": "Mon, 02 Apr 2018 00:00:00 GMT",
+    "activity": 2,
+    "involvement": 14.5
+  },
+  {
+    "day": "Tue, 03 Apr 2018 00:00:00 GMT",
+    "activity": 6,
+    "involvement": 4.5
+  },
+  {
+    "day": "Wed, 04 Apr 2018 00:00:00 GMT",
+    "activity": 7,
+    "involvement": 7
+  },
+  {
+    "day": "Thu, 05 Apr 2018 00:00:00 GMT",
+    "activity": 10,
+    "involvement": 2.5
+  },
+  {
+    "day": "Fri, 06 Apr 2018 00:00:00 GMT",
+    "activity": 7,
+    "involvement": 7.571428571428571
+  },
+  {
+    "day": "Sat, 07 Apr 2018 00:00:00 GMT",
+    "activity": 3,
+    "involvement": 4.666666666666667
+  },
+  {
+    "day": "Sun, 08 Apr 2018 00:00:00 GMT",
+    "activity": 3,
+    "involvement": 4.333333333333333
+  },
+  {
+    "day": "Mon, 09 Apr 2018 00:00:00 GMT",
+    "activity": 9,
+    "involvement": 3.7777777777777777
+  },
+  {
+    "day": "Tue, 10 Apr 2018 00:00:00 GMT",
+    "activity": 27,
+    "involvement": 2.7777777777777777
+  },
+  {
+    "day": "Wed, 11 Apr 2018 00:00:00 GMT",
+    "activity": 10,
+    "involvement": 8.1
+  },
+  {
+    "day": "Thu, 12 Apr 2018 00:00:00 GMT",
+    "activity": 37,
+    "involvement": 5.513513513513513
+  },
+  {
+    "day": "Fri, 13 Apr 2018 00:00:00 GMT",
+    "activity": 19,
+    "involvement": 5.105263157894737
+  },
+  {
+    "day": "Sat, 14 Apr 2018 00:00:00 GMT",
+    "activity": 8,
+    "involvement": 0.75
+  },
+  {
+    "day": "Sun, 15 Apr 2018 00:00:00 GMT",
+    "activity": 1,
+    "involvement": 10
+  }
+]
