@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar';
 import Chart from './components/grafici/Chart';
 import Header from './components/Header';
 import data from './json/luissDays.json';
+import data from './json/luissGuidoCarli.json';
 
 class App extends Component {
   componentDidMount() {
