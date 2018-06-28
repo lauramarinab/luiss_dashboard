@@ -3,11 +3,12 @@
   font-family: 'Officina Sans STD';
   letter-spacing: 0.5px;
   padding: 1.7rem;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   width: 200px;
+  height: 100vh;
   z-index: 300;
   display: flex;
   flex-direction: column;
@@ -22,11 +23,10 @@
   color: var(--darkGrey);
   font-size: 13px;
   list-style: none;
-  margin-top: 40px;
 }
 
 .navigation li {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 li a {
@@ -38,6 +38,7 @@ li a {
   font-size: 14px;
   list-style: none;
   margin-left: 35px;
+  font-weight: 800;
 }
 
 .navigation__hashtag {
@@ -45,6 +46,7 @@ li a {
   font-size: 14px;
   list-style: none;
   margin-left: 35px;
+  font-weight: 800;
 }
 
 .icon__h3 {
@@ -104,11 +106,12 @@ li a {
   font-family: 'Officina Sans STD';
   letter-spacing: 0.5px;
   padding: 1.7rem;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   width: 75px;
+  height: 100vh;
   z-index: 300;
   display: flex;
   flex-direction: column;

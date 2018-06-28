@@ -1,0 +1,13 @@
+header {
+  width: 100%;
+  height: 50px;
+  background-color: var(--denim);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.account-icon {
+  width: 20px;
+  margin-right: 1rem;
+  filter: brightness(0) invert(1);
+}

@@ -1,0 +1,38 @@
+.modal__wrapper{
+  position: absolute;
+  width: calc(100% - 1.25rem);
+  height: 100%;
+  z-index: 10;
+  padding: 15px;
+  background: #fff;
+  box-shadow: 0 1px 6px 0px rgba(182, 182, 182, 0.589); 
+  padding-bottom: 55px;
+  padding-left: 35px;
+}
+
+.icon-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+}
+
+.modal__testo{
+  overflow-y: scroll;
+  margin-top: 55px;
+  margin-right: 35px;
+}
+
+.modal__testo h3 {
+  font-size: 18px;
+  font-weight: 100;
+  margin-bottom: 20px;
+  color: (--darkGrey);
+}
+
+.modal__testo p {
+  font-size: 16px;
+  line-height: 1.5rem;
+  font-weight: 200;
+  color: (--darkGrey);
+}
