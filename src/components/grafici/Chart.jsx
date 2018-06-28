@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Select from './Select';
-import { Calendar } from 'primereact/components/calendar/Calendar';
-import 'primereact/resources/themes/omega/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
 import moment from 'moment';
 import Modal from './Modal';
 import './../../css/modale.css';
 import './../../css/chart.css';
 import info from './../../img/info.svg';
+import { Calendar } from 'primereact/components/calendar/Calendar';
+import 'primereact/resources/themes/omega/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 class Chart extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class Chart extends Component {
     };
   }
 
-  onModaleClick = e => this.mostraModale();
+  onModaleClick = () => this.mostraModale();
 
   setDateRange = e => {
     console.log(e);
@@ -64,15 +64,15 @@ class Chart extends Component {
               selectionMode="range"
               value={this.state.date}
               onChange={e => this.setDateRange(e)}
-            // onChange={e => this.setState({ date: e.value })}
+              // onChange={e => this.setState({ date: e.value })}
             />
           </div>
         </div>
         {this.state.ModaleIn ? (
           <Modal nascondiModale={this.nascondiModale} />
         ) : (
-            false
-          )}
+          false
+        )}
 
         {this.props.children}
       </div>

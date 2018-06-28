@@ -86,5 +86,10 @@ body {
 }
 
 html {
+<<<<<<< HEAD
   font-family: "Officina Sans STD";
+=======
+  font-family: "Officina Serif STD";
+  font-weight: 600;
+>>>>>>> franpa
 }

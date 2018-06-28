@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .sidebar__open {
   background: var(--moreLightGrey);
   font-family: 'Officina Sans STD';
@@ -12,10 +13,18 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 1px 6px 0px rgba(182, 182, 182, 0.589);
+=======
+.sidebar {
+  background-color: red;
+  font-family: 'Officina Sans STD';
+  letter-spacing: 0.5px;
+  padding: 1rem;
+>>>>>>> franpa
 }
 
 #logo {
   width: 140px;
+<<<<<<< HEAD
 }
 
 .navigation {
@@ -134,3 +143,6 @@ li a {
 .sidebar__close .bottone .icon-arrow {
   transform: rotate(180deg);
 }
+=======
+}
+>>>>>>> franpa

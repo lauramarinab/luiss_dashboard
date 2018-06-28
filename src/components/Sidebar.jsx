@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Logo from './Logo';
 import NavList from './NavList';
+<<<<<<< HEAD
 import arrow from './../img/arrow.svg';
+=======
+>>>>>>> franpa
 import './../css/Sidebar.css';
 
 class Sidebar extends Component {
@@ -27,6 +30,7 @@ class Sidebar extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <aside
         className={this.state.sidebar ? 'sidebar__open' : 'sidebar__close'}
         onClick={this.handleSidebar}
@@ -37,6 +41,12 @@ class Sidebar extends Component {
         <div className="bottone" onClick={this.handleSidebar}>
           <img src={arrow} alt="" className="icon-arrow" />
         </div>
+=======
+      <aside className="sidebar">
+        <Logo />
+        <NavList />
+        <div className="bottone" />
+>>>>>>> franpa
       </aside>
     );
   }
