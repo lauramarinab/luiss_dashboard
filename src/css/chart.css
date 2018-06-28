@@ -4,7 +4,12 @@
 
 
 .chart {
-  position: absolute;
+  position: relative;
   left: 300px;
   top: 100px;
+}
+
+svg {
+  overflow: visible;
+  margin-bottom: 50px;
 }

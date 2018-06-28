@@ -13,33 +13,33 @@ export default () => {
       enumerable: false,
       configurable: true,
       writable: true,
-      value (target, firstSource) {
+      value(target, firstSource) {
         if (target === undefined || target === null) {
-          throw new TypeError('Cannot convert first argument to object')
+          throw new TypeError('Cannot convert first argument to object');
         }
 
-        var to = Object(target)
-        for (var i = 1; i < arguments.length; i++) {
-          var nextSource = arguments[i]
+        const to = Object(target);
+        for (let i = 1; i < arguments.length; i++) {
+          let nextSource = arguments[i];
           if (nextSource === undefined || nextSource === null) {
-            continue
+            continue;
           }
-          nextSource = Object(nextSource)
+          nextSource = Object(nextSource);
 
-          var keysArray = Object.keys(Object(nextSource))
+          const keysArray = Object.keys(Object(nextSource));
           for (
-            var nextIndex = 0, len = keysArray.length;
+            let nextIndex = 0, len = keysArray.length;
             nextIndex < len;
             nextIndex++
           ) {
-            var nextKey = keysArray[nextIndex]
-            var desc = Object.getOwnPropertyDescriptor(nextSource, nextKey)
+            const nextKey = keysArray[nextIndex];
+            const desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
             if (desc !== undefined && desc.enumerable) {
-              to[nextKey] = nextSource[nextKey]
+              to[nextKey] = nextSource[nextKey];
             }
           }
         }
-        return to
+        return to;
       },
     });
   }
@@ -51,18 +51,18 @@ export default () => {
     window.location.search
       .substr(1)
       .split('&')
-      .forEach((item) => {
-        tmp = item.split('=')
-        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1])
+      .forEach(item => {
+        tmp = item.split('=');
+        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
       });
     return result;
   }
 
-  let groupIdRegex = /nbianchi-(\d)(?:_(\d))?/;
-  let bloccoIdRegex = /(\d+(?:\.\d+)?)(?:-(\w+))?/;
-  let groupsSelector = '#logo > svg > g';
-  let bianco = '#ffffff';
-  let colori = [
+  const groupIdRegex = /nbianchi-(\d)(?:_(\d))?/;
+  const bloccoIdRegex = /(\d+(?:\.\d+)?)(?:-(\w+))?/;
+  const groupsSelector = '#logo > svg > g';
+  const bianco = '#ffffff';
+  const colori = [
     '#7ba97d',
     '#6d7eb0',
     '#e6b041',
@@ -72,7 +72,7 @@ export default () => {
     '#a6ba66',
     '#585858',
   ];
-  let transizione = {
+  const transizione = {
     transitionDuration: findGetParameter('transitionDuration') || '250ms,250ms',
     transitionProperty: 'fill,stroke',
     transitionTimingFunction:
@@ -81,59 +81,58 @@ export default () => {
   };
 
   function decodebloccoId(element, id) {
-    let m = undefined;
-    id = id.replace(`${element.id  }-`, '');
+    let m;
+    id = id.replace(`${element.id}-`, '');
     if ((m = bloccoIdRegex.exec(id)) !== null) {
       return { id: parseFloat(m[1]), options: [m[2]] };
     }
   }
 
   function decodegroupId(id) {
-    var m = undefined
+    let m;
     if ((m = groupIdRegex.exec(id)) !== null) {
       if (m[2]) {
-        return [m[1], m[2]]
-      } 
-        return [m[1]]
-      
+        return [m[1], m[2]];
+      }
+      return [m[1]];
     }
   }
 
   function setTransition(blocchi) {
-    let colorSorted = [bianco];
-    let ind = undefined;
+    const colorSorted = [bianco];
+    let ind;
     // intervalloColori
-    blocchi.forEach((blocco) => {
-      if (!blocco.colore) return
-      var ind = colorSorted.indexOf(blocco.colore)
+    blocchi.forEach(blocco => {
+      if (!blocco.colore) return;
+      let ind = colorSorted.indexOf(blocco.colore);
       if (ind == -1) {
-        colorSorted.push(blocco.colore)
-        ind = colorSorted.length - 1
+        colorSorted.push(blocco.colore);
+        ind = colorSorted.length - 1;
       }
-      blocco.blocco.style.transitionDuration = transizione.transitionDuration
-      blocco.blocco.style.transitionProperty = transizione.transitionProperty
+      blocco.blocco.style.transitionDuration = transizione.transitionDuration;
+      blocco.blocco.style.transitionProperty = transizione.transitionProperty;
       blocco.blocco.style.transitionTimingFunction =
-        transizione.transitionTimingFunction
-      blocco.blocco.style.transitionDelay =
-        ind * transizione.transitionDelay + 'ms'
+        transizione.transitionTimingFunction;
+      blocco.blocco.style.transitionDelay = `${ind *
+        transizione.transitionDelay}ms`;
     });
-    console.log(colorSorted);
+    // console.log(colorSorted);
   }
 
   function colora(blocchi) {
     setTimeout(() => {
       // Non va messo come delay css, non funziona altrimenti
-      blocchi.forEach(function (blocco) {
-        blocco.blocco.style.fill = blocco.colore
-        blocco.blocco.style.stroke = blocco.colore
-      })
+      blocchi.forEach(blocco => {
+        blocco.blocco.style.fill = blocco.colore;
+        blocco.blocco.style.stroke = blocco.colore;
+      });
     }, transizione.transitionDelay);
   }
 
   function getBlocchi(element, nbianchi) {
     // Troviamo tutti i blocchi e salviamoli in un dict
-    let blocchi = [];
-    [].slice.call(element.childNodes).forEach(function(blocco, i) {
+    const blocchi = [];
+    [].slice.call(element.childNodes).forEach((blocco, i) => {
       if (blocco.id && blocco.id.startsWith(element.id)) {
         blocchi.push(
           Object.assign(
@@ -145,16 +144,14 @@ export default () => {
     });
 
     // Ordiniamo i blochi per id
-    blocchi.sort((a, b) => {
-      return a.id > b.id ? 1 : b.id > a.id ? -1 : 0
-    });
+    blocchi.sort((a, b) => (a.id > b.id ? 1 : b.id > a.id ? -1 : 0));
 
     // Quanti blocchi bianchi facciamo per questo pezzo?
     nbianchi = nbianchi[Math.floor(Math.random() * nbianchi.length)];
 
     // Troviamo i blocchi da colorare in bianco, non devono essere adiacenti
     while (nbianchi != 0) {
-      let bloccoId = Math.floor(Math.random() * blocchi.length);
+      const bloccoId = Math.floor(Math.random() * blocchi.length);
       if (blocchi[bloccoId].options.indexOf('nobianco') != -1) continue;
       if (blocchi[bloccoId].colore == bianco) continue;
       if (bloccoId + 1 in blocchi && blocchi[bloccoId + 1].colore == bianco)
@@ -171,46 +168,42 @@ export default () => {
     blocchi.forEach((blocco, ind) => {
       if (blocco.colore == bianco) {
         if (gruppi[last].length > 0 && ind != 0 && ind != blocchi.length - 1) {
-          gruppi.push([])
-          last++
+          gruppi.push([]);
+          last++;
         }
       } else {
-        gruppi[last].push(ind)
+        gruppi[last].push(ind);
       }
     });
 
     // Ne estriamo lenght-1 gruppi di blocchi casualmente (uno rimane grigio)
     gruppi = gruppi
       .slice(0)
-      .sort(() => {
-        return 0.5 - Math.random()
-      })
+      .sort(() => 0.5 - Math.random())
       .slice(0, gruppi.length - 1);
 
     // Estriamo gruppi.length colori e assegniamo un colore ai blocchi
-    let coloriXgruppi = colori
+    const coloriXgruppi = colori
       .slice(0)
-      .sort(() => {
-        return 0.5 - Math.random()
-      })
+      .sort(() => 0.5 - Math.random())
       .slice(0, gruppi.length);
 
     gruppi.forEach((gruppo, ind) => {
-      gruppo.forEach(function (bloccoInd) {
-        blocchi[bloccoInd].colore = coloriXgruppi[ind]
-      })
+      gruppo.forEach(bloccoInd => {
+        blocchi[bloccoInd].colore = coloriXgruppi[ind];
+      });
     });
 
     return blocchi;
   }
 
   function main() {
-    let groups = document.querySelectorAll(groupsSelector);
+    const groups = document.querySelectorAll(groupsSelector);
     let blocchi = [];
-    [].slice.call(groups).forEach(function(group) {
-      var nbianchi = decodegroupId(group.id);
+    [].slice.call(groups).forEach(group => {
+      const nbianchi = decodegroupId(group.id);
       if (nbianchi) {
-        [].slice.call(group.querySelectorAll('g')).forEach(function(element) {
+        [].slice.call(group.querySelectorAll('g')).forEach(element => {
           blocchi = blocchi.concat(getBlocchi(element, nbianchi));
         });
       }
