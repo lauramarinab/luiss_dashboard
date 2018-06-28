@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import Select from './Select';
-import { Calendar } from 'primereact/components/calendar/Calendar';
-import 'primereact/resources/themes/omega/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
 import moment from 'moment';
 import Modal from './Modal';
 import './../../css/chart.css';
 import infoIcon from './../../img/info.svg';
 import arrow from './../../img/arrow.svg';
+import info from './../../img/info.svg';
+import { Calendar } from 'primereact/components/calendar/Calendar';
+import 'primereact/resources/themes/omega/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 class Chart extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class Chart extends Component {
     };
   }
 
-  onModaleClick = e => this.mostraModale();
+  onModaleClick = () => this.mostraModale();
 
   setDateRange = e => {
     console.log(e);
@@ -88,6 +89,10 @@ class Chart extends Component {
 
             <div className="chart__action-select-date">
               <Calendar
+                minDate={new Date('2018-04-01')}
+                maxDate={new Date('2018-05-24')}
+                defaultDate={new Date('2018-04-01')}
+                readOnlyInput
                 dateFormat="dd/mm/yy"
                 selectionMode="range"
                 value={this.state.date}
