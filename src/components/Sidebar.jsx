@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Logo from './Logo';
 import NavList from './NavList';
 import arrow from './../img/arrow.svg';
+import logoSmall from './../img/logoSmall.gif';
 import './../css/Sidebar.css';
 
 class Sidebar extends Component {
@@ -31,7 +32,11 @@ class Sidebar extends Component {
         className={this.state.sidebar ? 'sidebar__open' : 'sidebar__close'}
         onClick={this.handleSidebar}
       >
-        {this.state.sidebar ? <Logo /> : null}
+        {this.state.sidebar ? (
+          <Logo />
+        ) : (
+          <img src={logoSmall} alt="" className="logo-small" />
+        )}
 
         <NavList handleSidebarProp={this.openSidebar} />
         <div className="bottone" onClick={this.handleSidebar}>

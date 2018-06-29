@@ -17,4 +17,7 @@
   .container-charts {
     flex-direction: column;
   }
+  .modal__wrapper {
+    width: 100%;
+  }
 } 

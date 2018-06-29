@@ -13,6 +13,7 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 1px 6px 0px rgba(182, 182, 182, 0.589);
+  /* transition: all 0.3s ease-in; */
 }
 
 #logo {
@@ -54,6 +55,7 @@ li a {
   align-items: center;
   align-content: center;
   margin-bottom: 15px;
+  cursor: pointer;
 }
 
 .navigation__icon-home {
@@ -67,12 +69,14 @@ li a {
   margin-right: 15px;
   position: relative;
   top: -3px;
+  cursor: pointer;
 }
 .navigation__icon-hashtag {
   width: 18px;
   margin-right: 15px;
   position: relative;
   top: -3px;
+  cursor: pointer;
 }
 
 .navigation li a:hover {
@@ -95,7 +99,7 @@ li a {
 .bottone {
   position: absolute;
   bottom: 1.7rem;
-  left: 1.7rem;
+  left: 160px;
 }
 
 
@@ -115,19 +119,36 @@ li a {
   z-index: 300;
   display: flex;
   flex-direction: column;
+  align-items: center;
   box-shadow: 0 1px 6px 0px rgba(182, 182, 182, 0.589);
+  /* transition: all 0.3s ease-in-out; */
 }
 
 .sidebar__close h3 {
   display: none;
 }
 
+.sidebar__close .navigation__account {
+  margin-left: 0px; 
+}
+
 .sidebar__close .navigation__account li {
   display: none;
 }
 
+.sidebar__close .navigation__hashtag {
+  margin-left: 0px; 
+}
+
 .sidebar__close .navigation__hashtag li {
   display: none;
+}
+
+.sidebar__close .navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
 }
 
 .sidebar__close .navigation li {
@@ -136,4 +157,16 @@ li a {
 
 .sidebar__close .bottone .icon-arrow {
   transform: rotate(180deg);
+}
+
+.sidebar__close .logo-small {
+  width: 50px;
+}
+
+.sidebar__close img {
+  margin: 0;
+}
+
+.sidebar__close .bottone {
+  left: 2rem;
 }
