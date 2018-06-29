@@ -58,7 +58,7 @@ class TrendCharts extends Component {
           </ResponsiveContainer>
         </Chart>
 
-        <Chart title="Quanto sono attivi gli account Luiss?">
+        <Chart title="Quanto coinvolgimento creano gli account Luiss?">
           <ResponsiveContainer
             width="95%"
             // height={600}
