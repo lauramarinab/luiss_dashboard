@@ -92,6 +92,7 @@ class Chart extends Component {
                 minDate={new Date('2018-04-01')}
                 maxDate={new Date('2018-05-24')}
                 defaultDate={new Date('2018-04-01')}
+                placeholder="seleziona un periodo"
                 readOnlyInput
                 dateFormat="dd/mm/yy"
                 selectionMode="range"
