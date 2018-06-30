@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './css/App.css';
 import { Route, Switch } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
+
 import Header from './components/Header';
 import TrendCharts from './components/grafici/TrendCharts';
 
