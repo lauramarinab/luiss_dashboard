@@ -94,7 +94,7 @@ class TrendCharts extends Component {
 
   changeFormatDate = date => {
     const formattedDate = Moment(date.substring(0, 16)).format('DD MMM');
-    console.log(formattedDate);
+    // console.log(formattedDate);
     return formattedDate;
   };
 
@@ -133,7 +133,7 @@ class TrendCharts extends Component {
         return el;
       }
     );
-    console.log(entityDaysActUpdatedWithInvolvementFormattedDate);
+    // console.log(entityDaysActUpdatedWithInvolvementFormattedDate);
 
     this.setState({
       attivitàCoinvolgimento: entityDaysActUpdatedWithInvolvementFormattedDate,
@@ -144,7 +144,7 @@ class TrendCharts extends Component {
 
   updateLinechart = e => {
     const accountSelected = e.target.innerText;
-    console.log(e.target.innerText);
+    // console.log(e.target.innerText);
     this.setState({
       accountSelected,
     });

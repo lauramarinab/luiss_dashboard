@@ -5,10 +5,11 @@ import Modal from './Modal';
 import './../../css/chart.css';
 import infoIcon from './../../img/info.svg';
 import info from './../../img/info.svg';
-import { Calendar } from 'primereact/components/calendar/Calendar';
-import 'primereact/resources/themes/omega/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
+// import { Calendar } from 'primereact/components/calendar/Calendar';
+// import 'primereact/resources/themes/omega/theme.css';
+// import 'primereact/resources/primereact.min.css';
+// import 'primeicons/primeicons.css';
+import Calendario from './Calendar';
 
 class Chart extends Component {
   constructor(props) {
@@ -94,7 +95,13 @@ class Chart extends Component {
             </div>
 
             <div className="chart__action-select-date">
-              <Calendar
+              <Calendario
+                setDateRange={this.setDateRange}
+                date={this.state.date}
+              >
+                <button>Applica</button>
+              </Calendario>
+              {/* <Calendar
                 minDate={new Date('2018-04-01')}
                 maxDate={new Date('2018-05-24')}
                 defaultDate={new Date('2018-04-01')}
@@ -105,7 +112,7 @@ class Chart extends Component {
                 value={this.state.date}
                 onChange={e => this.setDateRange(e)}
                 // onChange={e => this.setState({ date: e.value })}
-              />
+              /> */}
             </div>
           </div>
 

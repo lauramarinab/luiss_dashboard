@@ -2,7 +2,6 @@
   width: 23px;
 }
 
-
 .chart {
   position: relative;
   flex: 0 0 50%;
@@ -136,6 +135,17 @@
 .recharts-legend-item {
   margin-left: 20px !important;
   padding-top: 30px !important;
+}
+
+/* Calendar */
+
+.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-datepicker-trigger.ui-calendar-button.ui-button-icon-only {
+  background-color: var(--denim);
+  border-color: var(--denim);
+}
+
+.ui-inputtext.ui-state-default.ui-corner-all.ui-widget {
+  width: 65%;
 }
 
 
