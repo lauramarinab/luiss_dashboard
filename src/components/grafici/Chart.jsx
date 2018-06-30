@@ -4,7 +4,6 @@ import moment from 'moment';
 import Modal from './Modal';
 import './../../css/chart.css';
 import infoIcon from './../../img/info.svg';
-import arrow from './../../img/arrow.svg';
 import info from './../../img/info.svg';
 import { Calendar } from 'primereact/components/calendar/Calendar';
 import 'primereact/resources/themes/omega/theme.css';
@@ -78,13 +77,20 @@ class Chart extends Component {
               }
               onClick={this.toggleSelect}
             >
-              <span>ESEMPIO</span>
+              <img src={this.props.arrow} className="arrow__img" />
+              <span>{this.props.accountSelected}</span>
+
               <ul className="select__ul">
-                <li className="select__li">Lorem</li>
-                <li className="select__li">Ipsum</li>
-                <li className="select__li">Ipsum</li>
+                {this.props.select.map((entity, index) => (
+                  <li
+                    key={index}
+                    className="select__li"
+                    onClick={this.props.handleChartSelect}
+                  >
+                    {entity}
+                  </li>
+                ))}
               </ul>
-              <img src={arrow} className="arrow__img" />
             </div>
 
             <div className="chart__action-select-date">

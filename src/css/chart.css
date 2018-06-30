@@ -16,11 +16,6 @@
   padding-left: 1.25rem;
 }
 
-svg {
-  overflow: visible;
-  margin-bottom: 30px;
-}
-
 .chart__header {
   display: flex;
   justify-content: space-between;
@@ -46,7 +41,7 @@ svg {
   display: flex;
   justify-content: space-between;
   padding: 15px;
-  /* border-bottom: 1px solid var(--lightGrey) */
+  padding-left: 20px;
 }
 
 /* Select */
@@ -54,9 +49,14 @@ svg {
   width: 10px;
   transform: rotate(270deg);
   transition: all 0.2s ease-in-out;
-  margin-left: 15px;
+  margin-right: 15px;
   position: relative;
   top: -2px;
+}
+
+.select__container__close span {
+  width: 100%;
+  color: var(--darkGrey);
 }
 
 /* Select Close */
@@ -64,7 +64,6 @@ svg {
   cursor: pointer;
   display: flex;
   align-items: center;
-  width: 20%;
 }
 
 .select__container__close:hover > span {
@@ -93,9 +92,9 @@ svg {
 .select__container__open .select__ul {
   list-style: none;
   position: absolute;
-  margin-top: 85px;
+  margin-top: 90px;
   background: var(--moreLightGrey);
-  /* padding: 20px; */
+  margin-left: -5px;
   z-index: 10;
   box-shadow: 0 1px 6px 0px rgba(182, 182, 182, 0.589);
 }
@@ -112,6 +111,34 @@ svg {
   color: var(--corallo)
 }
 
+.select__container__open .select__ul .select__li:visited {
+  background: #fff;
+  color: var(--corallo)
+}
+
+/* Chart Legend */
+.recharts-legend-wrapper.recharts-default-legend {
+  left: 10px;
+  bottom: 10px;
+}
+
+.recharts-default-legend li {
+  font-size: 13px;
+  font-weight: normal;
+  display: flex;
+}
+
+.chart svg {
+  overflow: hidden;
+  /* margin-bottom: 30px; */
+}
+
+.recharts-legend-item {
+  margin-left: 20px !important;
+  padding-top: 30px !important;
+}
+
+
 @media screen and (max-width: 1070px) {
   .chart {
     flex: 1 0 40%;
@@ -127,6 +154,4 @@ svg {
     
     padding-left: 0;
   }
-
-
 } 

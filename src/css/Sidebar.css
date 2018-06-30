@@ -18,6 +18,7 @@
 
 #logo {
   width: 140px;
+  margin-bottom: 35px;
 }
 
 .navigation {
@@ -152,7 +153,7 @@ li a {
 }
 
 .sidebar__close .navigation li {
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
 }
 
 .sidebar__close .bottone .icon-arrow {
