@@ -12,13 +12,15 @@
   --lightGrey: #c1c1c1;
   --moreLightGrey: #f7f7f7;
   --denim: #6d7eb0;
+  --corallo: #ca4f24;
 }
 
 body {
   width: 100vw;
-  height: 100vh;
+  height: auto;
   position: relative;
-  overflow: hidden;
+  background: #c1c1c12c;
+  color: var(--darkGrey);
 }
 
 /* Officina Sans STD */
@@ -87,4 +89,5 @@ body {
 
 html {
   font-family: "Officina Sans STD";
+  font-weight: 600;
 }

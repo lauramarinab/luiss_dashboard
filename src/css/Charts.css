@@ -1,0 +1,23 @@
+.sidebar__open+.container-charts {
+  margin-left: 200px;
+}
+
+.sidebar__close+.container-charts {
+  margin-left: 75px;
+}
+
+.container-charts {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  padding: 2.5rem;
+}
+
+@media screen and (max-width: 1070px) {
+  .container-charts {
+    flex-direction: column;
+  }
+  .modal__wrapper {
+    width: 100%;
+  }
+} 

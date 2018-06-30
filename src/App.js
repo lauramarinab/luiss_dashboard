@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
 import './css/App.css';
-// import { Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import Chart from './components/grafici/Chart';
-import data from './json/luissDays.json';
+import Header from './components/Header';
+import TrendCharts from './components/grafici/TrendCharts';
 
 class App extends Component {
-  componentDidMount() {
-    console.log(data);
-  }
-
   render() {
     return (
-      <div>
+      <React.Fragment>
+        <Header />
         <Sidebar />
-        <Chart>ciao</Chart>
-      </div>
+        <Route exact path="/account/trend" render={() => <TrendCharts />} />
+      </React.Fragment>
     );
   }
 }

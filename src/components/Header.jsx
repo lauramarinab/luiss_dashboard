@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import account from './../img/account.svg';
+import './../css/header.css';
 
 class Header extends Component {
   render() {
     return (
       <header>
-        <div className="icona_utente" />
+        <img src={account} alt="" className="account-icon" />
       </header>
     );
   }
