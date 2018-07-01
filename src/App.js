@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar';
 
 import Header from './components/Header';
 import TrendCharts from './components/grafici/TrendCharts';
+import NetworkCharts from './components/grafici/NetworkCharts';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         <Header />
         <Sidebar />
         <Route exact path="/account/trend" render={() => <TrendCharts />} />
+        <Route exact path="/account/network" render={() => <NetworkCharts />} />
       </React.Fragment>
     );
   }

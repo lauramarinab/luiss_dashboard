@@ -5,6 +5,7 @@ import Modal from './Modal';
 import './../../css/chart.css';
 import infoIcon from './../../img/info.svg';
 import info from './../../img/info.svg';
+import Axios from 'axios';
 // import { Calendar } from 'primereact/components/calendar/Calendar';
 // import 'primereact/resources/themes/omega/theme.css';
 // import 'primereact/resources/primereact.min.css';
@@ -17,7 +18,7 @@ class Chart extends Component {
     this.state = {
       ModaleIn: false,
       inPage: false,
-      date: null,
+      date: [],
       openSelect: true,
     };
 
@@ -45,10 +46,28 @@ class Chart extends Component {
   onModaleClick = () => this.mostraModale();
 
   setDateRange = e => {
-    console.log(e);
+    // console.log(e.value);
+
+    // this.setState({ date: e.value });
+    // console.log(rangeArr);
+    // if (rangeArr[1] !== null) {}
     this.setState({ date: e.value });
-    const rangeArr = e.value.map(el => moment(el).format('YYYY-MM-DD'));
-    console.log(rangeArr);
+  };
+
+  handleCalendarClick = () => {
+    if (this.state.date.length !== 0 && this.state.date[1] !== null) {
+      console.log('ho le due date');
+      const rangeArr = this.state.date.map(el => {
+        if (el !== null) {
+          return moment(el).format('YYYY-MM-DD');
+        }
+        return el;
+      });
+      console.log(rangeArr);
+      const startDate = rangeArr[0];
+      const endDate = rangeArr[1];
+      this.props.getDates(startDate, endDate);
+    }
   };
 
   render() {
@@ -99,7 +118,7 @@ class Chart extends Component {
                 setDateRange={this.setDateRange}
                 date={this.state.date}
               >
-                <button>Applica</button>
+                <button onClick={this.handleCalendarClick}>Applica</button>
               </Calendario>
               {/* <Calendar
                 minDate={new Date('2018-04-01')}

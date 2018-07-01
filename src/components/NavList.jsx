@@ -38,6 +38,20 @@ class NavList extends Component {
                   Network
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  activeClassName="isActive"
+                  exact
+                  to="/account/hierarchies"
+                >
+                  Hierarchies
+                </NavLink>
+              </li>
+              <li>
+                <NavLink activeClassName="isActive" exact to="/account/chords">
+                  Chords
+                </NavLink>
+              </li>
             </ul>
           </li>
           <li>

@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Chart from './Chart';
+import './../../css/chart.css';
+import './../../css/Charts.css';
+import arrow from './../../img/arrow.svg';
 import {
   Sigma,
   EdgeShapes,
@@ -99,11 +103,30 @@ export default class NetworkCharts extends Component {
       return <h1>Loading...</h1>;
     }
     return (
-      <div>
-        <Sigma graph={myGraph} settings={{ drawEdges: true, clone: false }}>
-          <RelativeSize initialSize={15} />
-          <RandomizeNodePositions />
-        </Sigma>
+      <div className="container-charts">
+        <Chart
+          title="Quali account Luiss parlano degli stessi argomenti?"
+          select={[]}
+        >
+          <Sigma
+            graph={myGraph}
+            settings={{
+              drawEdges: true,
+              clone: false,
+              defaultLabelColor: '#ca4f24',
+              defaultEdgeColor: '#3498db',
+              zoomMin: 0.004,
+              defaultNodeColor: '#585858',
+              defaultLabelHoverColor: '#ca4f24',
+              nodeHoverColor: 'default',
+              defaultNodeHoverColor: '#fff',
+              // defaultEdgeHoverColor: '#3498db',
+            }}
+          >
+            <RelativeSize initialSize={15} />
+            <RandomizeNodePositions />
+          </Sigma>
+        </Chart>
       </div>
     );
   }

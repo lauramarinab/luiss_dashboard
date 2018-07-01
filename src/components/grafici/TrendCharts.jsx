@@ -4,7 +4,7 @@ import R from 'ramda';
 import Moment from 'moment';
 import Chart from './Chart';
 // import data from './../../json/luissData.json';
-import involvement from './../../json/accountInvolvement.json';
+// import involvement from './../../json/accountInvolvement.json';
 import {
   LineChart,
   Line,
@@ -155,6 +155,28 @@ class TrendCharts extends Component {
     );
   };
 
+  getDataByDates = (startDate, endDate) => {
+    Axios.get(
+      `http://165.227.158.131/dp/api/v155/trend/ma/twitter/range/${startDate}/${endDate}/order/involvement`
+    ).then(resp => {
+      // dobbiam avere un riferimento all'account selezionato nel select
+      Axios.get(
+        `http://165.227.158.131/dp/api/v155/trend/ma/twitter/range/${startDate}/${endDate}/order/activity`
+      ).then(res => {
+        this.setState({
+          allDataInvolvement: resp.data.apiData.data,
+          allDataActivity: res.data.apiData.data,
+        });
+        this.formatDataForLineChart(
+          this.state.accountSelected,
+          this.state.allDataActivity,
+          this.state.allDataInvolvement
+        );
+        console.log(resp.data.apiData);
+      });
+    });
+  };
+
   render() {
     return (
       <div className="container-charts">
@@ -164,6 +186,7 @@ class TrendCharts extends Component {
           arrow={arrow}
           handleChartSelect={this.updateLinechart}
           accountSelected={this.state.accountSelected}
+          getDates={this.getDataByDates}
         >
           <ResponsiveContainer
             width="95%"

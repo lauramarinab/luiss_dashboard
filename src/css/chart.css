@@ -73,7 +73,6 @@
   display: none;
 }
 
-
 /* Select Open */
 .select__container__open {
   cursor: pointer;
@@ -136,6 +135,21 @@
   margin-left: 20px !important;
   padding-top: 30px !important;
 }
+
+/* Network Chart */
+
+.sigma-mouse {
+  /* display: none; */
+}
+
+.sigma-scene {
+  /* padding: 2rem; */
+}
+
+.chart-background:last-child {
+  /* padding-bottom: 2rem; */
+}
+
 
 /* Calendar */
 

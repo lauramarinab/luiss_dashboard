@@ -11,7 +11,7 @@ class Calendario extends Component {
   };
 
   handleFocus = () => {
-    console.log('ciao');
+    // console.log('ciao');
     this.setState({ bottone: !this.state.bottone });
   };
 
