@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import Select from './Select';
 import moment from 'moment';
+import Axios from 'axios';
+import Select from './Select';
 import Modal from './Modal';
+import Calendario from './Calendar';
 import './../../css/chart.css';
 import infoIcon from './../../img/info.svg';
-import Axios from 'axios';
-// import { Calendar } from 'primereact/components/calendar/Calendar';
 // import 'primereact/resources/themes/omega/theme.css';
+// import { Calendar } from 'primereact/components/calendar/Calendar';
 // import 'primereact/resources/primereact.min.css';
 // import 'primeicons/primeicons.css';
-import Calendario from './Calendar';
 
 class Chart extends Component {
   state = {
     showModal: false,
-    date: [],
     openSelect: true,
+    date: [],
   };
 
   setDateRange = e => {
@@ -70,6 +70,15 @@ class Chart extends Component {
         </div>
         <div className="chart-background">
           <div className="chart__action-bar">
+            {this.props.doesSelectExist && (
+              <Select
+                isOpen={this.state.openSelect}
+                toggleSelect={this.toggleSelect}
+                option={[]}
+                selectOptions={this.props.selectOptions}
+              />
+            )}
+
             <div className="chart__action-select-date" />
           </div>
           {this.props.children}

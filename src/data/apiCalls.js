@@ -30,18 +30,18 @@ const getAllTrendAccountData = () =>
   ]).then(arr => [
     {
       type: 'luiss',
-      activity: arr[0].data.apiData,
-      involvement: arr[1].data.apiData,
+      activity: arr[0].data.apiData.data,
+      involvement: arr[1].data.apiData.data,
     },
     {
       type: 'people',
-      activity: arr[2].data.apiData,
-      involvement: arr[3].data.apiData,
+      activity: arr[2].data.apiData.data,
+      involvement: arr[3].data.apiData.data,
     },
     {
       type: 'competitors',
-      activity: arr[4].data.apiData,
-      involvement: arr[5].data.apiData,
+      activity: arr[4].data.apiData.data,
+      involvement: arr[5].data.apiData.data,
     },
   ]);
 

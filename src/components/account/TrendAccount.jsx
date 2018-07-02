@@ -18,7 +18,6 @@ import Api from '../../data/apiCalls';
 import './../../css/chart.css';
 import Spinner from './../Spinner';
 import Chart from './../grafici/Chart';
-import arrow from './../../img/arrow.svg';
 
 class TrendAccount extends Component {
   state = {
@@ -29,17 +28,45 @@ class TrendAccount extends Component {
     Api.getAllTrendAccountData().then(res => {
       this.setState({
         isLoading: false,
+        luissActivity: res[0].activity,
+        luissInvolvement: res[0].involvement,
       });
     });
   }
 
+  getEntities = dataArr => dataArr.map(el => el.entity);
+
+  getAllLuissEntities = () => {
+    const luissEntitiesByActivity = this.getEntities(this.state.luissActivity);
+    const luissEntitiesByInvolvement = this.getEntities(
+      this.state.luissInvolvement
+    );
+    const luissEntitiesArr = luissEntitiesByActivity.concat(
+      luissEntitiesByInvolvement
+    );
+
+    // I set eliminano i doppioni nell'array
+    const luissEntitiesSet = new Set(luissEntitiesArr);
+    const luissEntities = Array.from(luissEntitiesSet);
+    console.log(luissEntities);
+    return luissEntities;
+  };
+
+  showProva = () => {
+    this.getAllLuissEntities();
+  };
+
   render() {
     return (
-      <div className="container-charts">
+      <div className="container-charts" onClick={this.showProva}>
         {this.state.isLoading && <Spinner />}
         {!this.state.isLoading && (
           <React.Fragment>
-            <Chart chartTitle="Quanto sono attivi gli account Luiss?">
+            <Chart
+              chartTitle="Quanto sono attivi gli account Luiss?"
+              doesSelectExist
+              selectOptions={this.getAllLuissEntities()}
+            >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <LineChart
                   width={600}
@@ -72,7 +99,10 @@ class TrendAccount extends Component {
                 </LineChart>
               </ResponsiveContainer>
             </Chart>
-            <Chart chartTitle="Quanto coinvolgimento creano gli account Luiss?">
+            <Chart
+              chartTitle="Quanto coinvolgimento creano gli account Luiss?"
+              doesSelectExist={false}
+            >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <BarChart
                   width={730}
@@ -102,7 +132,10 @@ class TrendAccount extends Component {
                 </BarChart>
               </ResponsiveContainer>
             </Chart>
-            <Chart chartTitle="Chi è più attivo e coinvolgente nel mondo Luiss?">
+            <Chart
+              chartTitle="Chi è più attivo e coinvolgente nel mondo Luiss?"
+              doesSelectExist={false}
+            >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <BarChart
                   width={730}
@@ -132,7 +165,10 @@ class TrendAccount extends Component {
                 </BarChart>
               </ResponsiveContainer>
             </Chart>
-            <Chart chartTitle="Quale competitor è più attivo?">
+            <Chart
+              chartTitle="Quale competitor è più attivo?"
+              doesSelectExist={false}
+            >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <BarChart
                   width={730}
@@ -162,7 +198,10 @@ class TrendAccount extends Component {
                 </BarChart>
               </ResponsiveContainer>
             </Chart>
-            <Chart chartTitle="Quale competitor coinvolge di più?">
+            <Chart
+              chartTitle="Quale competitor coinvolge di più?"
+              doesSelectExist={false}
+            >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <BarChart
                   width={730}
