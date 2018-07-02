@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import './css/App.css';
-import { Route, Switch } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 
 import Header from './components/Header';
-import TrendCharts from './components/grafici/TrendCharts';
-import NetworkCharts from './components/grafici/NetworkCharts';
+import TrendAccount from './components/account/TrendAccount';
+import NetworkAccount from './components/account/NetworkAccount';
+import ChordAccount from './components/account/ChordAccount';
+import HierarchyAccount from './components/account/HierarchyAccount';
 
 class App extends Component {
   render() {
@@ -13,8 +15,10 @@ class App extends Component {
       <React.Fragment>
         <Header />
         <Sidebar />
-        <Route exact path="/account/trend" render={() => <TrendCharts />} />
-        <Route exact path="/account/network" render={() => <NetworkCharts />} />
+        <Route exact path="/account/trend" component={TrendAccount} />
+        <Route exact path="/account/network" component={NetworkAccount} />
+        <Route exact path="/account/hierarchy" component={HierarchyAccount} />
+        <Route exact path="/account/chord" component={ChordAccount} />
       </React.Fragment>
     );
   }

@@ -10,7 +10,7 @@ export default class Modal extends Component {
           src={close}
           alt=""
           className="icon-close"
-          onClick={this.props.nascondiModale}
+          onClick={this.props.toggleModal}
         />
 
         <div className="modal__testo">

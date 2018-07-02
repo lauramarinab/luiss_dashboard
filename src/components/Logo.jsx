@@ -3,9 +3,9 @@ import React from 'react';
 export default () => {
   // polyfill
   if (!String.prototype.startsWith) {
-    String.prototype.startsWith = function(search, pos) {
-      return this.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search;
-    };
+    // String.prototype.startsWith = function(search, pos) {
+    //   return this.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search;
+    // };
   }
 
   if (!Object.assign) {
@@ -100,12 +100,12 @@ export default () => {
 
   function setTransition(blocchi) {
     const colorSorted = [bianco];
-    let ind;
+    // let ind;
     // intervalloColori
     blocchi.forEach(blocco => {
       if (!blocco.colore) return;
       let ind = colorSorted.indexOf(blocco.colore);
-      if (ind == -1) {
+      if (ind === -1) {
         colorSorted.push(blocco.colore);
         ind = colorSorted.length - 1;
       }
@@ -150,13 +150,13 @@ export default () => {
     nbianchi = nbianchi[Math.floor(Math.random() * nbianchi.length)];
 
     // Troviamo i blocchi da colorare in bianco, non devono essere adiacenti
-    while (nbianchi != 0) {
+    while (nbianchi !== 0) {
       const bloccoId = Math.floor(Math.random() * blocchi.length);
-      if (blocchi[bloccoId].options.indexOf('nobianco') != -1) continue;
-      if (blocchi[bloccoId].colore == bianco) continue;
-      if (bloccoId + 1 in blocchi && blocchi[bloccoId + 1].colore == bianco)
+      if (blocchi[bloccoId].options.indexOf('nobianco') !== -1) continue;
+      if (blocchi[bloccoId].colore === bianco) continue;
+      if (bloccoId + 1 in blocchi && blocchi[bloccoId + 1].colore === bianco)
         continue;
-      if (bloccoId - 1 in blocchi && blocchi[bloccoId - 1].colore == bianco)
+      if (bloccoId - 1 in blocchi && blocchi[bloccoId - 1].colore === bianco)
         continue;
       blocchi[bloccoId].colore = bianco;
       nbianchi--;
@@ -166,8 +166,12 @@ export default () => {
     let gruppi = [[]];
     let last = 0;
     blocchi.forEach((blocco, ind) => {
-      if (blocco.colore == bianco) {
-        if (gruppi[last].length > 0 && ind != 0 && ind != blocchi.length - 1) {
+      if (blocco.colore === bianco) {
+        if (
+          gruppi[last].length > 0 &&
+          ind !== 0 &&
+          ind !== blocchi.length - 1
+        ) {
           gruppi.push([]);
           last++;
         }
