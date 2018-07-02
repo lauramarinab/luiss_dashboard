@@ -15,6 +15,7 @@ class Chart extends Component {
   state = {
     showModal: false,
     openSelect: true,
+    selectedOption: 'luiss guido carli',
     date: [],
   };
 
@@ -39,6 +40,16 @@ class Chart extends Component {
     });
   };
 
+  showSelectedOption = e => {
+    const selectedOption = e.target.innerText;
+    // console.log(e.target.innerText);
+    this.setState({
+      selectedOption,
+    });
+
+    this.props.formatDataForLineChart(selectedOption);
+  };
+
   handleCalendarClick = () => {
     if (this.state.date.length !== 0 && this.state.date[1] !== null) {
       console.log('ho le due date');
@@ -58,7 +69,12 @@ class Chart extends Component {
   render() {
     return (
       <div className="chart">
-        {this.state.showModal && <Modal toggleModal={this.toggleModal} />}
+        {this.state.showModal && (
+          <Modal
+            toggleModal={this.toggleModal}
+            graphExplanation={this.props.graphExplanation}
+          />
+        )}
         <div className="chart__header">
           <h2 className="chart__title">{this.props.chartTitle}</h2>
           <img
@@ -76,6 +92,8 @@ class Chart extends Component {
                 toggleSelect={this.toggleSelect}
                 option={[]}
                 selectOptions={this.props.selectOptions}
+                selectedOption={this.state.selectedOption}
+                showSelectedOption={this.showSelectedOption}
               />
             )}
 

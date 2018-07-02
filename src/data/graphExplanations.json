@@ -1,0 +1,5 @@
+[{
+  "chart": "lineChartActivityInvolvementAccount",
+  "title": "Quanto sono attivi gli account Luiss?",
+  "description": "In questo grafico è possibile vedere la correlazione tra l'attività di un account Luiss (numero di tweet al giorno) e il coinvolgimento creato (numero di like e retweet)"
+}]

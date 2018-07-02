@@ -3,7 +3,6 @@ import arrow from './../../img/arrow.svg';
 
 class Select extends Component {
   render() {
-    console.log(this.props.selectOptions);
     return (
       <div
         className={
@@ -14,14 +13,14 @@ class Select extends Component {
         onClick={this.props.toggleSelect}
       >
         <img src={arrow} className="arrow__img" />
-        <span>{this.props.selectOptions[0]}</span>
+        <span>{this.props.selectedOption}</span>
 
         <ul className="select__ul">
           {this.props.selectOptions.map((entity, index) => (
             <li
               key={index}
               className="select__li"
-              // onClick={''}
+              onClick={this.props.showSelectedOption}
             >
               {entity}
             </li>
