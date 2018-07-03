@@ -8,5 +8,10 @@
     "chart": "barChartInvolvementAccount",
     "title": "Quale account Luiss è più coinvolgente?",
     "description": "Questo grafico rappresenta quale account Luiss crea più coinvolgimento, misurato come il numero totale di like, retweet e risposte ricevute nel periodo di tempo selezionato"
+  },
+  {
+    "chart": "barDoubleChartPeople",
+    "title": "Chi è più attivo e coinvolgente nel mondo Luiss?",
+    "description": "Questo grafico mostra quanto i top influencer del mondo Luiss parlano e coinvolgono"
   }
 ]
