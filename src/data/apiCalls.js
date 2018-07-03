@@ -11,22 +11,27 @@ const hashtag = {
   competitors: 'v159',
 };
 
-const getTrendAccountDataBy = (version, behaviour) =>
+const getTrendAccountDataBy = (version, behaviour, startDate, endDate) =>
   Axios.get(
-    `http://165.227.158.131/dp/api/${version}/trend/ma/twitter/order/${behaviour}`
+    `http://165.227.158.131/dp/api/${version}/trend/ma/twitter/range/${startDate}/${endDate}/order/${behaviour}`
   );
-
+// `http://165.227.158.131/dp/api/v155/trend/ma/twitter/range/${startDate}/${endDate}/order/involvement`
 const getAccountDataBy = chart =>
   Axios.get(`http://165.227.158.131/dp/api/v155/${chart}/twitter/ma/100`);
 
-const getAllTrendAccountData = () =>
+const getAllTrendAccountData = (startDate, endDate) =>
   Axios.all([
-    getTrendAccountDataBy(account.luiss, 'activity'),
-    getTrendAccountDataBy(account.luiss, 'involvement'),
-    getTrendAccountDataBy(account.people, 'activity'),
-    getTrendAccountDataBy(account.people, 'involvement'),
-    getTrendAccountDataBy(account.competitors, 'activity'),
-    getTrendAccountDataBy(account.competitors, 'involvement'),
+    getTrendAccountDataBy(account.luiss, 'activity', startDate, endDate),
+    getTrendAccountDataBy(account.luiss, 'involvement', startDate, endDate),
+    getTrendAccountDataBy(account.people, 'activity', startDate, endDate),
+    getTrendAccountDataBy(account.people, 'involvement', startDate, endDate),
+    getTrendAccountDataBy(account.competitors, 'activity', startDate, endDate),
+    getTrendAccountDataBy(
+      account.competitors,
+      'involvement',
+      startDate,
+      endDate
+    ),
   ]).then(arr => [
     {
       type: 'luiss',
@@ -45,4 +50,33 @@ const getAllTrendAccountData = () =>
     },
   ]);
 
-export default { getAllTrendAccountData, getAccountDataBy };
+const getDataByDates = (startDate, endDate) => {};
+
+// getDataByDates = (startDate, endDate) => {
+//   Axios.get(
+//     `http://165.227.158.131/dp/api/v155/trend/ma/twitter/range/${startDate}/${endDate}/order/involvement`
+//   ).then(resp => {
+//     // dobbiam avere un riferimento all'account selezionato nel select
+//     Axios.get(
+//       `http://165.227.158.131/dp/api/v155/trend/ma/twitter/range/${startDate}/${endDate}/order/activity`
+//     ).then(res => {
+//       this.setState({
+//         allDataInvolvement: resp.data.apiData.data,
+//         allDataActivity: res.data.apiData.data,
+//       });
+//       this.formatDataForLineChart(
+//         this.state.accountSelected,
+//         this.state.allDataActivity,
+//         this.state.allDataInvolvement
+//       );
+//       console.log(resp.data.apiData);
+//     });
+//   });
+// };
+
+export default {
+  getAllTrendAccountData,
+  getAccountDataBy,
+  getTrendAccountDataBy,
+  getDataByDates,
+};

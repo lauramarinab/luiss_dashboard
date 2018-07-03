@@ -35,7 +35,7 @@
   color: (--darkGrey);
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1200px) {
   .modal__wrapper {
     width: calc(100% - 1.25rem);
   }

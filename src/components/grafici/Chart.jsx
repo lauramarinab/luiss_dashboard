@@ -17,15 +17,15 @@ class Chart extends Component {
     openSelect: true,
     selectedOption: 'luiss guido carli',
     date: [],
+    buttonDisabled: true,
   };
 
   setDateRange = e => {
-    // console.log(e.value);
-
-    // this.setState({ date: e.value });
-    // console.log(rangeArr);
-    // if (rangeArr[1] !== null) {}
-    this.setState({ date: e.value });
+    if (e.value.length !== 0 && e.value[1] !== null) {
+      this.setState({ date: e.value, buttonDisabled: false });
+    } else {
+      this.setState({ date: e.value, buttonDisabled: true });
+    }
   };
 
   toggleModal = () => {
@@ -50,9 +50,10 @@ class Chart extends Component {
     this.props.formatDataForLineChart(selectedOption);
   };
 
-  handleCalendarClick = () => {
+  handleCalendarClick = selectedOption => {
     if (this.state.date.length !== 0 && this.state.date[1] !== null) {
       console.log('ho le due date');
+
       const rangeArr = this.state.date.map(el => {
         if (el !== null) {
           return moment(el).format('YYYY-MM-DD');
@@ -62,7 +63,12 @@ class Chart extends Component {
       console.log(rangeArr);
       const startDate = rangeArr[0];
       const endDate = rangeArr[1];
-      this.props.getDates(startDate, endDate);
+      console.log(startDate);
+      this.props.getActivityInvolvementDates(
+        startDate,
+        endDate,
+        selectedOption
+      );
     }
   };
 
@@ -97,7 +103,22 @@ class Chart extends Component {
               />
             )}
 
-            <div className="chart__action-select-date" />
+            <div className="chart__action-select-date">
+              <Calendario
+                setDateRange={this.setDateRange}
+                date={this.state.date}
+              >
+                <button
+                  className="calendar__cta"
+                  disabled={this.state.buttonDisabled}
+                  onClick={selectedOption => {
+                    this.handleCalendarClick(this.state.selectedOption);
+                  }}
+                >
+                  Applica
+                </button>
+              </Calendario>
+            </div>
           </div>
           {this.props.children}
         </div>

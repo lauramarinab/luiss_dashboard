@@ -23,16 +23,18 @@ import graphExplanation from './../../data/graphExplanations.json';
 class TrendAccount extends Component {
   state = {
     isLoading: true,
+    luissActivity: [],
+    luissInvolvement: [],
+    entitiesActivityInvolvement: [],
   };
 
   componentDidMount() {
-    console.log();
-    Api.getAllTrendAccountData().then(res => {
+    Api.getAllTrendAccountData('2018-04-13', '2018-05-20').then(res => {
       this.setState({
         isLoading: false,
         luissActivity: res[0].activity,
         luissInvolvement: res[0].involvement,
-        entitiesActivityInvolvement: [],
+        // entitiesActivityInvolvement: [],
       });
 
       this.formatDataForLineChart(
@@ -119,7 +121,7 @@ class TrendAccount extends Component {
       }
     );
     // console.log(entityDaysActUpdatedWithInvolvementFormattedDate);
-
+    console.log('yo');
     this.setState({
       entitiesActivityInvolvement: entityDaysActUpdatedWithInvolvementFormattedDate,
     });
@@ -135,7 +137,21 @@ class TrendAccount extends Component {
     );
   };
 
-  showProva = () => {};
+  getAllTrendAccountDataByDates = (startDate, endDate, selectedOption) => {
+    Api.getAllTrendAccountData(startDate, endDate).then(res => {
+      this.setState({
+        luissActivity: res[0].activity,
+        luissInvolvement: res[0].involvement,
+      });
+      this.formatDataForLineChart(
+        selectedOption,
+        res[0].activity,
+        res[0].involvement
+      );
+    });
+  };
+
+  showProva = () => { };
 
   render() {
     return (
@@ -149,6 +165,7 @@ class TrendAccount extends Component {
               selectOptions={this.getAllLuissEntities()}
               formatDataForLineChart={this.updateChartByEntity}
               graphExplanation={graphExplanation[0]}
+              getActivityInvolvementDates={this.getAllTrendAccountDataByDates}
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <LineChart

@@ -26,7 +26,7 @@
   margin-right: 1.25rem;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1200px) {
   .container-charts {
     padding-left: 4.75rem;
   }
@@ -79,7 +79,7 @@
 
 .chart__action-bar {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 15px;
   padding-left: 20px;
 }
@@ -214,5 +214,58 @@
 }
 
 .ui-inputtext.ui-state-default.ui-corner-all.ui-widget {
-  width: 65%;
+  position: relative;
+  width: 110px;
+}
+
+.ui-calendar-w-btn {
+  /* position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  transform: scale(0.9); */
+}
+
+.chart__action-select-date {
+  display: flex;
+  margin-left: auto;
+  /* flex-direction: column; */
+}
+
+.calendar__cta {
+  background-color: var(--denim);
+  color: #fff;
+  font: inherit;
+  font-weight: normal;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--denim);
+  letter-spacing: 1px;
+  /* margin-left: 20px; */
+}
+
+.calendar__cta:focus {
+  outline: none;
+}
+
+.calendar__cta:active {
+  background-color: #556596;
+}
+
+.calendar__cta:disabled {
+  opacity: 0.5;
+}
+
+.ui-inputtext.ui-corner-all {
+  border-radius: 0;
+  border: 1px solid var(--denim);
+}
+
+.ui-datepicker-current-day .ui-state-default.ui-state-active {
+  background-color: var(--denim);
+}
+
+.ui-datepicker.ui-widget .ui-datepicker-calendar td a.ui-state-active {
+  background-color: var(--denim) !important;
 }

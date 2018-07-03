@@ -10,10 +10,10 @@ class Calendario extends Component {
     bottone: false,
   };
 
-  handleFocus = () => {
-    // console.log('ciao');
-    this.setState({ bottone: !this.state.bottone });
-  };
+  // handleFocus = () => {
+  //   // console.log('ciao');
+  //   this.setState({ bottone: !this.state.bottone });
+  // };
 
   render() {
     return (
@@ -30,9 +30,6 @@ class Calendario extends Component {
           selectionMode="range"
           value={this.props.date}
           onChange={this.props.setDateRange}
-          onFocus={this.handleFocus}
-          onBlur={this.handleFocus}
-          showIcon="true"
           // onChange={e => this.setState({ date: e.value })}
         />
         {this.props.children}
