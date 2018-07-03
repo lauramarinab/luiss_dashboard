@@ -25,15 +25,20 @@ class TrendAccount extends Component {
     isLoading: true,
     luissActivity: [],
     luissInvolvement: [],
+    luissInvolvementBar: [],
     entitiesActivityInvolvement: [],
   };
 
   componentDidMount() {
     Api.getAllTrendAccountData('2018-04-13', '2018-05-20').then(res => {
+      const luissInvolvementBarFormattedData = this.formatInvolvementFrequencyData(
+        res[0].involvement
+      );
       this.setState({
         isLoading: false,
         luissActivity: res[0].activity,
         luissInvolvement: res[0].involvement,
+        luissInvolvementBar: luissInvolvementBarFormattedData,
         // entitiesActivityInvolvement: [],
       });
 
@@ -44,6 +49,27 @@ class TrendAccount extends Component {
       );
     });
   }
+
+  formatDecimalData = decimal =>
+    // console.log(Math.floor(decimal));
+    Math.floor(decimal);
+
+  formatInvolvementFrequencyData = arr => {
+    const newArr = arr.concat();
+    for (let i = 0; i < newArr.length; i++) {
+      const dataDaysLength = newArr[i].days.length;
+
+      newArr[i].frequency = this.formatDecimalData(newArr[i].frequency);
+      newArr[i] = this.changeProp('frequency', 'Coinvolgimento', newArr[i]);
+      for (let t = 0; t < dataDaysLength; t++) {
+        newArr[i].days[t].value = this.formatDecimalData(
+          newArr[i].days[t].value
+        );
+      }
+      console.log(newArr[i]);
+    }
+    return newArr;
+  };
 
   getEntities = dataArr => dataArr.map(el => el.entity);
 
@@ -151,7 +177,20 @@ class TrendAccount extends Component {
     });
   };
 
-  showProva = () => { };
+  updateBarchart = (startDate, endDate) => {
+    Api.getTrendAccountDataBy('v155', 'involvement', startDate, endDate).then(
+      res => {
+        const luissInvolvementBarForattedData = this.formatInvolvementFrequencyData(
+          res.data.apiData.data
+        );
+        this.setState({
+          luissInvolvementBar: luissInvolvementBarForattedData,
+        });
+      }
+    );
+  };
+
+  showProva = () => {};
 
   render() {
     return (
@@ -200,14 +239,16 @@ class TrendAccount extends Component {
               </ResponsiveContainer>
             </Chart>
             <Chart
-              chartTitle="Quanto coinvolgimento creano gli account Luiss?"
+              chartTitle="Quale account Luiss è più coinvolgente?"
               doesSelectExist={false}
+              graphExplanation={graphExplanation[1]}
+              getActivityInvolvementDates={this.updateBarchart}
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <BarChart
                   width={730}
                   height={250}
-                  data={[]}
+                  data={this.state.luissInvolvementBar}
                   margin={{ top: 40, right: 20, left: 10, bottom: 20 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
@@ -220,7 +261,7 @@ class TrendAccount extends Component {
                   />
                   <YAxis style={{ fontSize: 12, fontWeight: 100 }} />
                   <Tooltip />
-                  <Bar dataKey="frequency" fill="#a6ba66">
+                  <Bar dataKey="Coinvolgimento" fill="#a6ba66">
                     <LabelList
                       dataKey="entity"
                       position="insideBottomLeft"

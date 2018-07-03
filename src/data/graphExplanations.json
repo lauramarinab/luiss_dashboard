@@ -1,5 +1,12 @@
-[{
-  "chart": "lineChartActivityInvolvementAccount",
-  "title": "Quanto sono attivi gli account Luiss?",
-  "description": "In questo grafico è possibile vedere la correlazione tra l'attività di un account Luiss (numero di tweet al giorno) e il coinvolgimento creato (numero di like e retweet)"
-}]
+[
+  {
+    "chart": "lineChartActivityInvolvementAccount",
+    "title": "Quanto sono attivi gli account Luiss?",
+    "description": "In questo grafico è possibile vedere la correlazione tra l'attività di un account Luiss (numero di tweet al giorno) e il coinvolgimento creato (numero di like e retweet)"
+  },
+  {
+    "chart": "barChartInvolvementAccount",
+    "title": "Quale account Luiss è più coinvolgente?",
+    "description": "Questo grafico rappresenta quale account Luiss crea più coinvolgimento, misurato come il numero totale di like, retweet e risposte ricevute nel periodo di tempo selezionato"
+  }
+]

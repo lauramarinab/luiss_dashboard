@@ -64,11 +64,15 @@ class Chart extends Component {
       const startDate = rangeArr[0];
       const endDate = rangeArr[1];
       console.log(startDate);
-      this.props.getActivityInvolvementDates(
-        startDate,
-        endDate,
-        selectedOption
-      );
+      if (selectedOption) {
+        this.props.getActivityInvolvementDates(
+          startDate,
+          endDate,
+          selectedOption
+        );
+      } else {
+        this.props.getActivityInvolvementDates(startDate, endDate);
+      }
     }
   };
 
