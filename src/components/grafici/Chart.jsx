@@ -52,18 +52,16 @@ class Chart extends Component {
 
   handleCalendarClick = selectedOption => {
     if (this.state.date.length !== 0 && this.state.date[1] !== null) {
-      console.log('ho le due date');
-
       const rangeArr = this.state.date.map(el => {
         if (el !== null) {
           return moment(el).format('YYYY-MM-DD');
         }
         return el;
       });
-      console.log(rangeArr);
+
       const startDate = rangeArr[0];
       const endDate = rangeArr[1];
-      console.log(startDate);
+
       if (selectedOption) {
         this.props.getActivityInvolvementDates(
           startDate,

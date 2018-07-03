@@ -50,9 +50,7 @@ class TrendAccount extends Component {
     });
   }
 
-  formatDecimalData = decimal =>
-    // console.log(Math.floor(decimal));
-    Math.floor(decimal);
+  formatDecimalData = decimal => Math.floor(decimal);
 
   formatInvolvementFrequencyData = arr => {
     const newArr = arr.concat();
@@ -66,7 +64,6 @@ class TrendAccount extends Component {
           newArr[i].days[t].value
         );
       }
-      console.log(newArr[i]);
     }
     return newArr;
   };
@@ -117,9 +114,17 @@ class TrendAccount extends Component {
     const entityDaysAct = entityDataAct.days || [];
     const entityDaysInv = entityDataInv.days || [];
 
-    const entityDaysActUpdated = entityDaysAct.map(el =>
-      this.changeProp('value', 'Attività', el)
-    );
+    let entityDaysActUpdated = [];
+    if (entityDaysAct.length !== 0) {
+      entityDaysActUpdated = entityDaysAct.map(el =>
+        this.changeProp('value', 'Attività', el)
+      );
+    } else {
+      entityDaysActUpdated = entityDaysInv.map(el => ({
+        Attività: 0,
+        day: el.day,
+      }));
+    }
 
     const entityDaysActUpdatedWithInvolvement = entityDaysActUpdated.map(el =>
       this.assignNewPropToObj('Coinvolgimento', el)
@@ -146,12 +151,10 @@ class TrendAccount extends Component {
         return el;
       }
     );
-    // console.log(entityDaysActUpdatedWithInvolvementFormattedDate);
-    console.log('yo');
+
     this.setState({
       entitiesActivityInvolvement: entityDaysActUpdatedWithInvolvementFormattedDate,
     });
-    // console.log(entityDaysActUpdatedWithInvolvement);
     return entityDaysActUpdatedWithInvolvementFormattedDate;
   };
 
@@ -190,7 +193,7 @@ class TrendAccount extends Component {
     );
   };
 
-  showProva = () => {};
+  showProva = () => { };
 
   render() {
     return (
