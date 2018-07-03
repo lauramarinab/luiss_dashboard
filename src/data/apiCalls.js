@@ -15,9 +15,11 @@ const getTrendAccountDataBy = (version, behaviour, startDate, endDate) =>
   Axios.get(
     `http://165.227.158.131/dp/api/${version}/trend/ma/twitter/range/${startDate}/${endDate}/order/${behaviour}`
   );
-// `http://165.227.158.131/dp/api/v155/trend/ma/twitter/range/${startDate}/${endDate}/order/involvement`
-const getAccountDataBy = chart =>
-  Axios.get(`http://165.227.158.131/dp/api/v155/${chart}/twitter/ma/100`);
+
+const getDataBy = (version, chart, limit) =>
+  Axios.get(
+    `http://165.227.158.131/dp/api/${version}/${chart}/twitter/ma/${limit}`
+  );
 
 const getAllTrendAccountData = (startDate, endDate) =>
   Axios.all([
@@ -52,31 +54,9 @@ const getAllTrendAccountData = (startDate, endDate) =>
 
 const getDataByDates = (startDate, endDate) => {};
 
-// getDataByDates = (startDate, endDate) => {
-//   Axios.get(
-//     `http://165.227.158.131/dp/api/v155/trend/ma/twitter/range/${startDate}/${endDate}/order/involvement`
-//   ).then(resp => {
-//     // dobbiam avere un riferimento all'account selezionato nel select
-//     Axios.get(
-//       `http://165.227.158.131/dp/api/v155/trend/ma/twitter/range/${startDate}/${endDate}/order/activity`
-//     ).then(res => {
-//       this.setState({
-//         allDataInvolvement: resp.data.apiData.data,
-//         allDataActivity: res.data.apiData.data,
-//       });
-//       this.formatDataForLineChart(
-//         this.state.accountSelected,
-//         this.state.allDataActivity,
-//         this.state.allDataInvolvement
-//       );
-//       console.log(resp.data.apiData);
-//     });
-//   });
-// };
-
 export default {
   getAllTrendAccountData,
-  getAccountDataBy,
+  getDataBy,
   getTrendAccountDataBy,
   getDataByDates,
 };
