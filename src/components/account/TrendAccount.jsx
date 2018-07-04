@@ -12,6 +12,8 @@ import {
   ResponsiveContainer,
   BarChart,
   Bar,
+  PieChart,
+  Pie,
 } from 'recharts';
 import Moment from 'moment';
 import Api from '../../data/apiCalls';
@@ -30,6 +32,8 @@ class TrendAccount extends Component {
     peopleActivity: [],
     peopleInvolvement: [],
     peopleActivityInvolvement: [],
+    competitorsActivity: [],
+    competitorsInvolvement: [],
   };
 
   componentDidMount() {
@@ -44,6 +48,8 @@ class TrendAccount extends Component {
         luissInvolvementBar: luissInvolvementBarFormattedData,
         peopleActivity: res[1].activity,
         peopleInvolvement: res[1].involvement,
+        competitorsActivity: res[2].activity,
+        competitorsInvolvement: res[2].involvement,
         // entitiesActivityInvolvement: [],
       });
 
@@ -412,32 +418,20 @@ class TrendAccount extends Component {
               doesSelectExist={false}
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
-                <BarChart
-                  width={730}
-                  height={250}
-                  data={[]}
-                  margin={{ top: 40, right: 20, left: 10, bottom: 20 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis
-                    dataKey="entity"
-                    minTickGap={-300}
-                    textAnchor="end"
-                    angle={-40}
-                    style={{ fontSize: 0, fontWeight: 100 }}
-                  />
-                  <YAxis style={{ fontSize: 12, fontWeight: 100 }} />
+                <PieChart width={730} height={250}>
                   <Tooltip />
-                  <Bar dataKey="frequency" fill="#a6ba66">
-                    <LabelList
-                      dataKey="entity"
-                      position="insideBottomLeft"
-                      angle={-90}
-                      style={{ fontSize: 12, fontWeight: 100 }}
-                      offset={17}
-                    />
-                  </Bar>
-                </BarChart>
+                  <Pie
+                    data={this.state.competitorsActivity}
+                    dataKey="frequency"
+                    nameKey="entity"
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={60}
+                    outerRadius={80}
+                    fill="#ca4f24"
+                    label
+                  />
+                </PieChart>
               </ResponsiveContainer>
             </Chart>
             <Chart
