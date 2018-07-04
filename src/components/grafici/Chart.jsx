@@ -94,13 +94,6 @@ class Chart extends Component {
     this.props.handleCheck(e.target.value, '2018-04-01', '2018-05-30');
   };
 
-  // setDate = (startDate, endDate) => {
-  //   this.setState({
-  //     checkStartDate: startDate,
-  //     checkEndDate: endDate,
-  //   });
-  // };
-
   render() {
     return (
       <div className="chart">

@@ -65,6 +65,24 @@ class TrendHashtag extends Component {
   }
 
   getAllTrendHashtagDataByDates = (startDate, endDate, selectedOption) => {
+    Api.getAllTrendAccountData(startDate, endDate).then(res => {
+      this.setState({
+        luissActivity: res[0].activity,
+        luissInvolvement: res[0].involvement,
+      });
+      this.formatDataForLineChart(
+        selectedOption,
+        res[0].activity,
+        res[0].involvement
+      );
+    });
+  };
+
+  getAllTrendHashtagDataByDatesRadioButtons = (
+    startDate,
+    endDate,
+    selectedOption
+  ) => {
     Api.getAllTrendHashtagData(startDate, endDate).then(res => {
       if (this.state.typeOfData === 'Attività') {
         const hashtagLuissActivityFormatted = res[0].activity.map(el =>
@@ -190,6 +208,7 @@ class TrendHashtag extends Component {
               )}
               formatDataForLineChart={this.updateChartByEntity}
               getActivityInvolvementDates={this.getAllTrendHashtagDataByDates}
+              selectedOption="luiss"
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <LineChart
@@ -227,7 +246,9 @@ class TrendHashtag extends Component {
               doesSelectExist={false}
               doesCheckExist
               handleCheck={this.handleCheck}
-              getActivityInvolvementDates={this.getAllTrendHashtagDataByDates}
+              getActivityInvolvementDates={
+                this.getAllTrendHashtagDataByDatesRadioButtons
+              }
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <BarChart
