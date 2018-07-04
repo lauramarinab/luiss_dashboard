@@ -74,6 +74,33 @@ class Chart extends Component {
     }
   };
 
+  handleRadio = e => {
+    if (this.state.date.length !== 0 && this.state.date[1] !== null) {
+      const rangeArr = this.state.date.map(el => {
+        if (el !== null) {
+          return moment(el).format('YYYY-MM-DD');
+        }
+        return el;
+      });
+
+      const startDate = rangeArr[0];
+      const endDate = rangeArr[1];
+      console.log(endDate);
+      this.props.handleCheck(e.target.value, startDate, endDate);
+      return;
+    }
+    console.log('check');
+    console.log(e.target.value);
+    this.props.handleCheck(e.target.value, '2018-04-01', '2018-05-30');
+  };
+
+  // setDate = (startDate, endDate) => {
+  //   this.setState({
+  //     checkStartDate: startDate,
+  //     checkEndDate: endDate,
+  //   });
+  // };
+
   render() {
     return (
       <div className="chart">
@@ -104,7 +131,34 @@ class Chart extends Component {
                 showSelectedOption={this.showSelectedOption}
               />
             )}
-
+            {this.props.doesCheckExist && (
+              <React.Fragment>
+                <div>
+                  <label className="container">
+                    Attività
+                    <input
+                      type="radio"
+                      name="radio"
+                      defaultChecked
+                      onChange={e => this.handleRadio(e)}
+                      value="activity"
+                    />
+                    <span className="checkmark" />
+                  </label>
+                  <label className="container">
+                    Coinvolgimento
+                    <input
+                      type="radio"
+                      defaultChecked={false}
+                      name="radio"
+                      onChange={e => this.handleRadio(e)}
+                      value="involvement"
+                    />
+                    <span className="checkmark" />
+                  </label>
+                </div>
+              </React.Fragment>
+            )}
             <div className="chart__action-select-date">
               <Calendario
                 setDateRange={this.setDateRange}

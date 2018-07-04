@@ -10,6 +10,7 @@ import TrendAccount from './components/account/TrendAccount';
 import NetworkAccount from './components/account/NetworkAccount';
 import ChordAccount from './components/account/ChordAccount';
 import HierarchyAccount from './components/account/HierarchyAccount';
+import TrendHashtag from './components/hashtag/TrendHashtag';
 
 const fakeAuth = {
   isAuthenticated: false,
@@ -51,6 +52,7 @@ class App extends Component {
         <Route exact path="/account/network" component={NetworkAccount} />
         <Route exact path="/account/hierarchy" component={HierarchyAccount} />
         <Route exact path="/account/chord" component={ChordAccount} />
+        <Route exact path="/hashtag/trend" component={TrendHashtag} />
 
         {/* <PrivateRoute exact path="/" component={Homepage} />
         <PrivateRoute exact path="/account/trend" component={TrendAccount} />

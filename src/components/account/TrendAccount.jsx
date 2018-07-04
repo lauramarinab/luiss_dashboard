@@ -21,6 +21,7 @@ import './../../css/chart.css';
 import Spinner from './../Spinner';
 import Chart from './../grafici/Chart';
 import graphExplanation from './../../data/graphExplanations.json';
+import Helper from './../../helper';
 
 class TrendAccount extends Component {
   state = {
@@ -38,7 +39,7 @@ class TrendAccount extends Component {
 
   componentDidMount() {
     Api.getAllTrendAccountData('2018-04-13', '2018-05-20').then(res => {
-      const luissInvolvementBarFormattedData = this.formatInvolvementFrequencyData(
+      const luissInvolvementBarFormattedData = Helper.formatInvolvementFrequencyData(
         res[0].involvement
       );
       this.setState({
@@ -61,85 +62,30 @@ class TrendAccount extends Component {
     });
   }
 
-  formatDecimalData = decimal => Math.floor(decimal);
-
-  formatInvolvementFrequencyData = arr => {
-    const newArr = arr.concat();
-    for (let i = 0; i < newArr.length; i++) {
-      const dataDaysLength = newArr[i].days.length;
-
-      newArr[i].frequency = this.formatDecimalData(newArr[i].frequency);
-      newArr[i] = this.changeProp('frequency', 'Coinvolgimento', newArr[i]);
-      for (let t = 0; t < dataDaysLength; t++) {
-        newArr[i].days[t].value = this.formatDecimalData(
-          newArr[i].days[t].value
-        );
-      }
-    }
-    return newArr;
-  };
-
-  getEntities = dataArr => dataArr.map(el => el.entity);
-
-  // getAllLuissEntities = () => {
-  //   const luissEntitiesByActivity = this.getEntities(this.state.luissActivity);
-  //   const luissEntitiesByInvolvement = this.getEntities(
-  //     this.state.luissInvolvement
-  //   );
-  //   const luissEntitiesArr = luissEntitiesByActivity.concat(
-  //     luissEntitiesByInvolvement
-  //   );
-
-  //   // I set eliminano i doppioni nell'array
-  //   const luissEntitiesSet = new Set(luissEntitiesArr);
-  //   const luissEntities = Array.from(luissEntitiesSet);
-
-  //   return luissEntities;
-  // };
-  getAllEntities = (typeActivity, typeInvolvement) => {
-    const EntitiesByActivity = this.getEntities(typeActivity);
-    const EntitiesByInvolvement = this.getEntities(typeInvolvement);
-    const EntitiesArr = EntitiesByActivity.concat(EntitiesByInvolvement);
-
-    // I set eliminano i doppioni nell'array
-    const EntitiesSet = new Set(EntitiesArr);
-    const Entities = Array.from(EntitiesSet);
-
-    return Entities;
-  };
-
-  getSingleEntityData = (ent, setOfData) => {
-    const getEntity = entità => setOfData.find(el => el.entity === entità);
-    return getEntity(ent);
-  };
-
-  changeProp = (prop1, prop2, ogg) => {
-    const renameProp = (oldProp, newProp, { [oldProp]: old, ...others }) => ({
-      [newProp]: old,
-      ...others,
+  getAllTrendAccountDataByDates = (startDate, endDate, selectedOption) => {
+    Api.getAllTrendAccountData(startDate, endDate).then(res => {
+      this.setState({
+        luissActivity: res[0].activity,
+        luissInvolvement: res[0].involvement,
+      });
+      this.formatDataForLineChart(
+        selectedOption,
+        res[0].activity,
+        res[0].involvement
+      );
     });
-
-    return renameProp(prop1, prop2, ogg);
-  };
-
-  assignNewPropToObj = (newProp, objToAssign) =>
-    Object.assign({ [newProp]: 0 }, objToAssign);
-
-  changeFormatDate = date => {
-    const formattedDate = Moment(date.substring(0, 16)).format('DD MMM');
-    return formattedDate;
   };
 
   formatDataForLineChart = (ent, setOfDataAct, setOfDataInv) => {
-    const entityDataAct = this.getSingleEntityData(ent, setOfDataAct) || [];
-    const entityDataInv = this.getSingleEntityData(ent, setOfDataInv) || [];
+    const entityDataAct = Helper.getSingleEntityData(ent, setOfDataAct) || [];
+    const entityDataInv = Helper.getSingleEntityData(ent, setOfDataInv) || [];
     const entityDaysAct = entityDataAct.days || [];
     const entityDaysInv = entityDataInv.days || [];
 
     let entityDaysActUpdated = [];
     if (entityDaysAct.length !== 0) {
       entityDaysActUpdated = entityDaysAct.map(el =>
-        this.changeProp('value', 'Attività', el)
+        Helper.changeProp('value', 'Attività', el)
       );
     } else {
       entityDaysActUpdated = entityDaysInv.map(el => ({
@@ -149,7 +95,7 @@ class TrendAccount extends Component {
     }
 
     const entityDaysActUpdatedWithInvolvement = entityDaysActUpdated.map(el =>
-      this.assignNewPropToObj('Coinvolgimento', el)
+      Helper.assignNewPropToObj('Coinvolgimento', el)
     );
 
     for (let i = 0; i < entityDaysActUpdatedWithInvolvement.length; i++) {
@@ -169,7 +115,7 @@ class TrendAccount extends Component {
 
     const entityDaysActUpdatedWithInvolvementFormattedDate = entityDaysActUpdatedWithInvolvement.map(
       el => {
-        el.day = this.changeFormatDate(el.day);
+        el.day = Helper.changeFormatDate(el.day);
         return el;
       }
     );
@@ -193,14 +139,14 @@ class TrendAccount extends Component {
     const peopleInvolvement = this.state.peopleInvolvement;
 
     const peopleActivityFormatted = peopleActivity.map(el =>
-      this.changeProp('frequency', 'Attività', el)
+      Helper.changeProp('frequency', 'Attività', el)
     );
 
     const peopleInvolvementFormatted = peopleInvolvement.map(el =>
-      this.changeProp('frequency', 'Coinvolgimento', el)
+      Helper.changeProp('frequency', 'Coinvolgimento', el)
     );
 
-    const entities = this.getAllEntities(
+    const entities = Helper.getAllEntities(
       this.state.peopleActivity,
       this.state.peopleInvolvement
     );
@@ -216,7 +162,7 @@ class TrendAccount extends Component {
       if (!entitàAttività) {
         return {
           Attività: 0,
-          Coinvolgimento: this.formatDecimalData(
+          Coinvolgimento: Helper.formatDecimalData(
             entitàCoinvolgimento.Coinvolgimento
           ),
           entity: entità,
@@ -230,7 +176,7 @@ class TrendAccount extends Component {
       }
       return {
         Attività: entitàAttività.Attività,
-        Coinvolgimento: this.formatDecimalData(
+        Coinvolgimento: Helper.formatDecimalData(
           entitàCoinvolgimento.Coinvolgimento
         ),
         entity: entità,
@@ -240,24 +186,10 @@ class TrendAccount extends Component {
     return peopleForDoubleBarChart;
   };
 
-  getAllTrendAccountDataByDates = (startDate, endDate, selectedOption) => {
-    Api.getAllTrendAccountData(startDate, endDate).then(res => {
-      this.setState({
-        luissActivity: res[0].activity,
-        luissInvolvement: res[0].involvement,
-      });
-      this.formatDataForLineChart(
-        selectedOption,
-        res[0].activity,
-        res[0].involvement
-      );
-    });
-  };
-
   updateBarchart = (startDate, endDate) => {
     Api.getTrendAccountDataBy('v155', 'involvement', startDate, endDate).then(
       res => {
-        const luissInvolvementBarForattedData = this.formatInvolvementFrequencyData(
+        const luissInvolvementBarForattedData = Helper.formatInvolvementFrequencyData(
           res.data.apiData.data
         );
         this.setState({
@@ -277,26 +209,16 @@ class TrendAccount extends Component {
     });
   };
 
-  showProva = () => {
-    // console.log(
-    //   this.getAllEntities(
-    //     this.state.peopleActivity,
-    //     this.state.peopleInvolvement
-    //   )
-    // );
-    this.formatDataForDoubleBarChart();
-  };
-
   render() {
     return (
-      <div className="container-charts" onClick={this.showProva}>
+      <div className="container-charts">
         {this.state.isLoading && <Spinner />}
         {!this.state.isLoading && (
           <React.Fragment>
             <Chart
               chartTitle="Quanto sono attivi gli account Luiss?"
               doesSelectExist
-              selectOptions={this.getAllEntities(
+              selectOptions={Helper.getAllEntities(
                 this.state.luissActivity,
                 this.state.luissInvolvement
               )}

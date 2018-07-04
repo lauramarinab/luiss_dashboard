@@ -20,11 +20,11 @@ class Calendario extends Component {
       <div className="chart__action-select-date">
         <Calendar
           minDate={new Date('2018-04-01')}
-          maxDate={new Date('2018-05-24')}
+          maxDate={new Date('2018-05-30')}
           defaultDate={new Date('2018-04-01')}
-          placeholder={`${Moment(new Date('2018-04-13')).format(
+          placeholder={`${Moment(new Date('2018-04-1')).format(
             'DD/MM'
-          )} - ${Moment(new Date('2018-05-20')).format('DD/MM')}`}
+          )} - ${Moment(new Date('2018-05-30')).format('DD/MM')}`}
           readOnlyInput
           dateFormat="dd/mm"
           selectionMode="range"
