@@ -348,3 +348,22 @@
   border-radius: 50%;
   background: white;
 }
+
+/* networks-charts */
+
+.network-charts {
+
+}
+
+.sigma > * {
+  height: 500px !important;
+}
+
+@media screen and (min-width: 1200px) {
+  
+  .network-charts .chart {
+    flex: 0 0 100%;
+  }
+  
+}
+
