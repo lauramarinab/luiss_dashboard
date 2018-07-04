@@ -6,8 +6,19 @@ header {
   justify-content: flex-end;
 }
 
-.account-icon {
-  width: 20px;
-  margin-right: 1rem;
-  filter: brightness(0) invert(1);
+header a {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.account-logout {
+  width: 22px;
+}
+
+.button__logout {
+  background: none;
+  border: none;
+  width: 50px;
+  cursor: pointer;
+  outline: none;
 }

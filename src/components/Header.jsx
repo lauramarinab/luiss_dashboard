@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import account from './../img/account.svg';
+import logout from './../img/logout.svg';
+import { Link } from 'react-router-dom';
 import './../css/header.css';
 
 class Header extends Component {
   render() {
     return (
       <header>
-        <img src={account} alt="" className="account-icon" />
+        <Link to="/login">
+          <button className="button__logout">
+            <img src={logout} alt="logout" className="account-logout" />
+          </button>
+        </Link>
       </header>
     );
   }
