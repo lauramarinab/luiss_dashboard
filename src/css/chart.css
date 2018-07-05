@@ -356,7 +356,16 @@
 }
 
 .sigma > * {
-  height: 500px !important;
+  height: 600px !important;
+  /* padding: 50px !important; */
+}
+
+.sigma > * {
+  
+}
+
+.network-charts .chart__action-bar {
+  display: none;
 }
 
 @media screen and (min-width: 1200px) {

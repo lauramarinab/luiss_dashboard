@@ -225,6 +225,7 @@ class TrendAccount extends Component {
               formatDataForLineChart={this.updateChartByEntity}
               graphExplanation={graphExplanation[0]}
               getActivityInvolvementDates={this.getAllTrendAccountDataByDates}
+              doesCalendarExist
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <LineChart
@@ -263,6 +264,7 @@ class TrendAccount extends Component {
               doesSelectExist={false}
               graphExplanation={graphExplanation[1]}
               getActivityInvolvementDates={this.updateBarchart}
+              doesCalendarExist
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <BarChart
@@ -298,6 +300,7 @@ class TrendAccount extends Component {
               doesSelectExist={false}
               graphExplanation={graphExplanation[2]}
               getActivityInvolvementDates={this.updateDoubleBarchart}
+              doesCalendarExist
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <BarChart
@@ -338,6 +341,7 @@ class TrendAccount extends Component {
             <Chart
               chartTitle="Quale competitor è più attivo?"
               doesSelectExist={false}
+              doesCalendarExist
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <PieChart width={730} height={250}>
@@ -359,6 +363,7 @@ class TrendAccount extends Component {
             <Chart
               chartTitle="Quale competitor coinvolge di più?"
               doesSelectExist={false}
+              doesCalendarExist
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <BarChart

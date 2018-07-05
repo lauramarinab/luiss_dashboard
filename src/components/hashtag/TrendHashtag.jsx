@@ -190,6 +190,7 @@ class TrendHashtag extends Component {
               )}
               formatDataForLineChart={this.updateChartByEntity}
               getActivityInvolvementDates={this.getAllTrendHashtagDataByDates}
+              doesCalendarExist
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <LineChart
@@ -228,6 +229,7 @@ class TrendHashtag extends Component {
               doesCheckExist
               handleCheck={this.handleCheck}
               getActivityInvolvementDates={this.getAllTrendHashtagDataByDates}
+              doesCalendarExist={false}
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <BarChart
