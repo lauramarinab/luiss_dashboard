@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import Chord from './../grafici/ChordCharts';
 
 class ChordHashtag extends Component {
   render() {
     return (
       <div>
-        <h1>Chord Hashtag</h1>
+        <Chord />
       </div>
     );
   }

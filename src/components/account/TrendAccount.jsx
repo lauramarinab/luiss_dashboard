@@ -211,7 +211,7 @@ class TrendAccount extends Component {
 
   render() {
     return (
-      <div className="container-charts">
+      <div className="container-charts account-charts">
         {this.state.isLoading && <Spinner />}
         {!this.state.isLoading && (
           <React.Fragment>
@@ -222,6 +222,7 @@ class TrendAccount extends Component {
                 this.state.luissActivity,
                 this.state.luissInvolvement
               )}
+              selectedOption="luiss guido carli"
               formatDataForLineChart={this.updateChartByEntity}
               graphExplanation={graphExplanation[0]}
               getActivityInvolvementDates={this.getAllTrendAccountDataByDates}

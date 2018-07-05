@@ -195,7 +195,7 @@ class TrendHashtag extends Component {
 
   render() {
     return (
-      <div className="container-charts">
+      <div className="container-charts hashtag-trend-charts">
         {this.state.isLoading && <Spinner />}
         {!this.state.isLoading && (
           <React.Fragment>
@@ -206,6 +206,7 @@ class TrendHashtag extends Component {
                 this.state.hashtagLuissActivity,
                 this.state.hashtagLuissInvolvement
               )}
+              selectedOption="luiss"
               formatDataForLineChart={this.updateChartByEntity}
               getActivityInvolvementDates={this.getAllTrendHashtagDataByDates}
               selectedOption="luiss"
@@ -267,7 +268,15 @@ class TrendHashtag extends Component {
                   />
                   <YAxis style={{ fontSize: 12, fontWeight: 100 }} />
                   <Tooltip />
-                  <Bar dataKey={this.state.typeOfData} fill="#a6ba66" />
+                  <Bar dataKey={this.state.typeOfData} fill="#a6ba66">
+                    <LabelList
+                      dataKey="entity"
+                      position="insideBottomLeft"
+                      angle={-90}
+                      style={{ fontSize: 12, fontWeight: 100 }}
+                      offset={17}
+                    />
+                  </Bar>
                 </BarChart>
               </ResponsiveContainer>
             </Chart>

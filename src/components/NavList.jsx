@@ -54,7 +54,7 @@ class NavList extends Component {
                 </NavLink>
               </li>
               <li>
-                <NavLink activeClassName="isActive" exact to="/account/chords">
+                <NavLink activeClassName="isActive" exact to="/account/chord">
                   Chords
                 </NavLink>
               </li>

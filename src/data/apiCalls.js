@@ -20,9 +20,32 @@ const getDataBy = (version, chart, type, startDate, endDate, limit) =>
   Axios.get(
     `http://165.227.158.131/dp/api/${version}/${chart}/twitter/${type}/range/${startDate}/${endDate}/${limit}`
   );
-// netwoek personalità v160
-// network competitor account
-// network competior hashtag
+
+const getAllChordData = () =>
+  Axios.all([
+    getDataBy('v155', 'chord', 'ma', '2018-04-01', '2018-05-30', 5),
+    getDataBy('v158', 'chord', 'ma', '2018-04-01', '2018-05-30', 5),
+    getDataBy('v155', 'chord', 'ht', '2018-04-01', '2018-05-30', 5),
+    getDataBy('v158', 'chord', 'ht', '2018-04-01', '2018-05-30', 5),
+  ]).then(arr => [
+    {
+      type: 'accountMa',
+      data: arr[0].data,
+    },
+    {
+      type: 'competitorMa',
+      data: arr[1].data,
+    },
+    {
+      type: 'accountHt',
+      data: arr[2].data,
+    },
+    {
+      type: 'competitorHt',
+      data: arr[3].data,
+    },
+  ]);
+
 const getAllNetworksData = () =>
   Axios.all([
     getDataBy('v155', 'network', 'ma', '2018-04-01', '2018-05-30', 20),
@@ -103,8 +126,6 @@ const getAllTrendHashtagData = (startDate, endDate) =>
     },
   ]);
 
-// const getDataByDates = (startDate, endDate) => {};
-
 export default {
   getAllTrendAccountData,
   getDataBy,
@@ -112,4 +133,5 @@ export default {
   getAllTrendHashtagData,
   getTrendHashtagDataBy,
   getAllNetworksData,
+  getAllChordData,
 };

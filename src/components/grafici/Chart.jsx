@@ -15,7 +15,7 @@ class Chart extends Component {
   state = {
     showModal: false,
     openSelect: true,
-    selectedOption: 'luiss guido carli',
+    selectedOption: this.props.selectedOption,
     date: [],
     buttonDisabled: true,
   };
@@ -43,6 +43,7 @@ class Chart extends Component {
   showSelectedOption = e => {
     const selectedOption = e.target.innerText;
     // console.log(e.target.innerText);
+    console.log(selectedOption);
     this.setState({
       selectedOption,
     });
