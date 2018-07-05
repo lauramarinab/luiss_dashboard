@@ -37,18 +37,18 @@ li a {
 
 .navigation__account {
   color: var(--darkGrey);
-  font-size: 14px;
+  font-size: 15px;
   list-style: none;
   margin-left: 35px;
-  font-weight: 800;
+  font-weight: 100;
 }
 
 .navigation__hashtag {
   color: var(--darkGrey);
-  font-size: 14px;
+  font-size: 15px;
   list-style: none;
   margin-left: 35px;
-  font-weight: 800;
+  font-weight: 100;
 }
 
 .icon__h3 {
@@ -80,17 +80,26 @@ li a {
   cursor: pointer;
 }
 
-.navigation li a:hover {
-  color: var(--denim) !important; 
+.navigation li ul li a:hover {
+  color: var(--corallo) !important; 
 }
 
-.navigation li a:visited {
+.navigation li a:visited, .navigation li a {
   color: var(--darkGrey); 
 }
 
 .isActive {
-  color: var(--denim) !important; 
+  color: var(--corallo) !important; 
+  font-weight: bold;
+  
 }
+
+/* .isActive:after {
+  content: "\25BC";
+  display: inline-block;
+  margin-left: 4px;
+  transform: scale(0.7) rotate(-90deg);
+} */
 
 .icon-arrow {
   width: 13px;

@@ -64,8 +64,9 @@
 }
 
 .chart__title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 100;
+  padding-right: 15px;
 }
 
 .chart__icon-info {
@@ -188,9 +189,48 @@
   color: var(--corallo)
 }
 
+.legend--align-top .recharts-legend-item {
+  margin-bottom: 20px !important;
+  margin-top: 0 !important;
+  
+}
+
 .recharts-legend-item {
   margin-left: 20px !important;
-  padding-top: 30px !important;
+  margin-top: 15px !important;
+}
+
+.recharts-default-legend li {
+  font-size: 13px;
+}
+
+.recharts-legend-wrapper {
+  margin-top: -5px;
+}
+
+.recharts-layer .recharts-label-list text {
+  font-size: 12px !important;
+}
+
+@media screen and (min-width: 900px) {
+  
+  .recharts-default-legend li {
+    font-size: 16px;
+  }
+
+  .recharts-layer .recharts-label-list text {
+    font-size: 16px !important;
+  }
+  
+}
+
+@media screen and (min-width: 1200px) {
+  
+
+  .recharts-layer .recharts-label-list text {
+    font-size: 12px !important;
+  }
+  
 }
 
 /* Network Chart */
@@ -376,3 +416,12 @@
   
 }
 
+.listaPersonaggi {
+  position: absolute;
+  top: 30%;
+  left: 0;
+}
+
+.listaPersonaggi li:not(:last-child) {
+  margin-bottom: 30px;
+}

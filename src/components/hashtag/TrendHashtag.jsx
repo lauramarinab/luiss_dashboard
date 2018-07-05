@@ -229,7 +229,7 @@ class TrendHashtag extends Component {
               doesCheckExist
               handleCheck={this.handleCheck}
               getActivityInvolvementDates={this.getAllTrendHashtagDataByDates}
-              doesCalendarExist={false}
+              doesCalendarExist
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <BarChart
