@@ -23,10 +23,16 @@ class NavList extends Component {
             </NavLink>
           </li>
           <li>
-            <div className="icon__h3" onClick={this.props.handleSidebarProp}>
-              <img src={account} alt="" className="navigation__icon-account" />
-              <h3>ACCOUNT</h3>
-            </div>
+            <NavLink exact to="/account/trend">
+              <div className="icon__h3" onClick={this.props.handleSidebarProp}>
+                <img
+                  src={account}
+                  alt=""
+                  className="navigation__icon-account"
+                />
+                <h3>ACCOUNT</h3>
+              </div>
+            </NavLink>
             <ul className="navigation__account">
               <li>
                 <NavLink activeClassName="isActive" exact to="/account/trend">
@@ -55,10 +61,16 @@ class NavList extends Component {
             </ul>
           </li>
           <li>
-            <div className="icon__h3" onClick={this.props.handleSidebarProp}>
-              <img src={hashtag} alt="" className="navigation__icon-hashtag" />
-              <h3>HASHTAG</h3>
-            </div>
+            <NavLink exact to="/hashtag/trend">
+              <div className="icon__h3" onClick={this.props.handleSidebarProp}>
+                <img
+                  src={hashtag}
+                  alt=""
+                  className="navigation__icon-hashtag"
+                />
+                <h3>HASHTAG</h3>
+              </div>
+            </NavLink>
             <ul className="navigation__hashtag">
               <li>
                 <NavLink activeClassName="isActive" exact to="/hashtag/trend">
@@ -68,6 +80,20 @@ class NavList extends Component {
               <li>
                 <NavLink activeClassName="isActive" exact to="/hashtag/network">
                   Network
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  activeClassName="isActive"
+                  exact
+                  to="/hashtag/hierarchies"
+                >
+                  Hierarchies
+                </NavLink>
+              </li>
+              <li>
+                <NavLink activeClassName="isActive" exact to="/hashtag/chord">
+                  Chords
                 </NavLink>
               </li>
             </ul>

@@ -225,6 +225,7 @@ class TrendAccount extends Component {
               formatDataForLineChart={this.updateChartByEntity}
               graphExplanation={graphExplanation[0]}
               getActivityInvolvementDates={this.getAllTrendAccountDataByDates}
+              doesCalendarExist
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <LineChart
@@ -263,6 +264,7 @@ class TrendAccount extends Component {
               doesSelectExist={false}
               graphExplanation={graphExplanation[1]}
               getActivityInvolvementDates={this.updateBarchart}
+              doesCalendarExist
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <BarChart
@@ -282,13 +284,13 @@ class TrendAccount extends Component {
                   <YAxis style={{ fontSize: 12, fontWeight: 100 }} />
                   <Tooltip />
                   <Bar dataKey="Coinvolgimento" fill="#a6ba66">
-                    {/* <LabelList
+                    <LabelList
                       dataKey="entity"
                       position="insideBottomLeft"
                       angle={-90}
                       style={{ fontSize: 12, fontWeight: 100 }}
                       offset={17}
-                    /> */}
+                    />
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
@@ -298,46 +300,52 @@ class TrendAccount extends Component {
               doesSelectExist={false}
               graphExplanation={graphExplanation[2]}
               getActivityInvolvementDates={this.updateDoubleBarchart}
+              doesCalendarExist
             >
-              <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
+              <ResponsiveContainer
+                width="95%"
+                aspect={4.0 / 3.0}
+                className="legend--align-top"
+              >
                 <BarChart
                   width={730}
                   height={250}
                   data={this.formatDataForDoubleBarChart()}
-                  layout="vertical"
-                  margin={{ top: 40, right: 20, left: 10, bottom: 20 }}
+                  // layout="vertical"
+                  margin={{ top: 10, right: 20, left: 10, bottom: 60 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis
-                    type="number"
-                    style={{ fontSize: 12, fontWeight: 100 }}
-                  />
-                  <YAxis
                     dataKey="entity"
-                    type="category"
+                    // type="category"
                     minTickGap={-300}
                     textAnchor="end"
                     angle={-40}
-                    style={{ fontSize: 0, fontWeight: 100 }}
+                    style={{ fontSize: 12, fontWeight: 100 }}
+                  />
+                  <YAxis
+                    // type="number"
+                    style={{ fontSize: 12, fontWeight: 100 }}
                   />
                   <Tooltip />
-                  <Legend />
+                  <Legend verticalAlign="top" />
                   <Bar dataKey="Attività" fill="#ca4f24">
                     {/* <LabelList
                       dataKey="entity"
-                      position="left"
-                      angle={0}
-                      style={{ fontSize: 16, fontWeight: 700 }}
-                      offset={0}
+                      position="insideBottomLeft"
+                      angle={-90}
+                      style={{ fontSize: 12, fontWeight: 100 }}
+                      offset={17}
                     /> */}
                   </Bar>
                   <Bar dataKey="Coinvolgimento" fill="#6d7eb0" />
                 </BarChart>
               </ResponsiveContainer>
             </Chart>
-            <Chart
+            {/* <Chart
               chartTitle="Quale competitor è più attivo?"
               doesSelectExist={false}
+              doesCalendarExist
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <PieChart width={730} height={250}>
@@ -359,6 +367,7 @@ class TrendAccount extends Component {
             <Chart
               chartTitle="Quale competitor coinvolge di più?"
               doesSelectExist={false}
+              doesCalendarExist
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <BarChart
@@ -388,7 +397,7 @@ class TrendAccount extends Component {
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
-            </Chart>
+            </Chart> */}
           </React.Fragment>
         )}
       </div>

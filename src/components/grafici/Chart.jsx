@@ -153,20 +153,22 @@ class Chart extends Component {
               </React.Fragment>
             )}
             <div className="chart__action-select-date">
-              <Calendario
-                setDateRange={this.setDateRange}
-                date={this.state.date}
-              >
-                <button
-                  className="calendar__cta"
-                  disabled={this.state.buttonDisabled}
-                  onClick={selectedOption => {
-                    this.handleCalendarClick(this.state.selectedOption);
-                  }}
+              {this.props.doesCalendarExist && (
+                <Calendario
+                  setDateRange={this.setDateRange}
+                  date={this.state.date}
                 >
-                  Applica
-                </button>
-              </Calendario>
+                  <button
+                    className="calendar__cta"
+                    disabled={this.state.buttonDisabled}
+                    onClick={selectedOption => {
+                      this.handleCalendarClick(this.state.selectedOption);
+                    }}
+                  >
+                    Applica
+                  </button>
+                </Calendario>
+              )}
             </div>
           </div>
           {this.props.children}

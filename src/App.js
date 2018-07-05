@@ -11,6 +11,9 @@ import NetworkAccount from './components/account/NetworkAccount';
 import ChordAccount from './components/account/ChordAccount';
 import HierarchyAccount from './components/account/HierarchyAccount';
 import TrendHashtag from './components/hashtag/TrendHashtag';
+import NetworkHashtag from './components/hashtag/NetworkHashtag';
+import ChordHashtag from './components/hashtag/ChordHashtag';
+import HierarchyHashtag from './components/hashtag/HierarchyHashtag';
 
 const fakeAuth = {
   isAuthenticated: false,
@@ -53,6 +56,9 @@ class App extends Component {
         <Route exact path="/account/hierarchy" component={HierarchyAccount} />
         <Route exact path="/account/chord" component={ChordAccount} />
         <Route exact path="/hashtag/trend" component={TrendHashtag} />
+        <Route exact path="/hashtag/network" component={NetworkHashtag} />
+        <Route exact path="/hashtag/hierarchy" component={HierarchyHashtag} />
+        <Route exact path="/hashtag/chord" component={ChordHashtag} />
 
         {/* <PrivateRoute exact path="/" component={Homepage} />
         <PrivateRoute exact path="/account/trend" component={TrendAccount} />

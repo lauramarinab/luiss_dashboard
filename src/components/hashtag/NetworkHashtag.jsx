@@ -34,8 +34,8 @@ export default class NetworkCharts extends Component {
 
   componentDidMount() {
     Api.getAllNetworksData().then(res => {
-      const networkAccount = res[0];
-      const networkCompetitor = res[1];
+      const networkAccount = res[2];
+      const networkCompetitor = res[3];
       const graphNetworkAccount = this.createNetwork(
         networkAccount.type,
         networkAccount.data
@@ -89,13 +89,13 @@ export default class NetworkCharts extends Component {
         {!this.state.isLoading && (
           <React.Fragment>
             <Chart
-              chartTitle="Quali account Luiss parlano degli stessi argomenti?"
+              chartTitle="Quali hashtag vengono citati di più negli stessi tweet di Luiss?"
               getActivityInvolvementDates={this.getNetworkDataByDate}
               doesCalendarExist
             >
               <div className="sigma">
                 <Sigma
-                  graph={this.state.networkGraphs[0].accountMa}
+                  graph={this.state.networkGraphs[0].accountHt}
                   settings={{
                     drawEdges: true,
                     clone: false,
@@ -116,13 +116,13 @@ export default class NetworkCharts extends Component {
               </div>
             </Chart>
             <Chart
-              chartTitle="Quali competitors di Luiss parlano degli stessi argomenti?"
+              chartTitle="Quali hashtag vengono citati di più negli stessi tweet dei competitors di Luiss?"
               getActivityInvolvementDates={this.getNetworkDataByDate}
               doesCalendarExist
             >
               <div className="sigma">
                 <Sigma
-                  graph={this.state.networkGraphs[1].competitorMa}
+                  graph={this.state.networkGraphs[1].competitorHt}
                   settings={{
                     drawEdges: true,
                     clone: false,
