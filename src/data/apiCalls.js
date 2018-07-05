@@ -20,6 +20,37 @@ const getDataBy = (version, chart, type, startDate, endDate, limit) =>
   Axios.get(
     `http://165.227.158.131/dp/api/${version}/${chart}/twitter/${type}/range/${startDate}/${endDate}/${limit}`
   );
+
+const getAllHierarchiesData = () =>
+  Axios.all([
+    getDataBy('v155', 'hierarchy', 'ma', '2018-04-03', '2018-05-24', 100),
+    getDataBy('v160', 'hierarchy', 'ma', '2018-04-03', '2018-05-24', 100),
+    getDataBy('v158', 'hierarchy', 'ma', '2018-04-03', '2018-05-24', 100),
+    getDataBy('v155', 'hierarchy', 'ht', '2018-04-03', '2018-05-24', 100),
+    getDataBy('v158', 'hierarchy', 'ht', '2018-04-03', '2018-05-24', 100),
+  ]).then(arr => [
+    {
+      type: 'accountMa',
+      data: arr[0].data.apiData.hierarchy.data,
+    },
+    {
+      type: 'personalitàMa',
+      data: arr[1].data.apiData.hierarchy.data,
+    },
+    {
+      type: 'competitorsMa',
+      data: arr[2].data.apiData.hierarchy.data,
+    },
+    {
+      type: 'accountHt',
+      data: arr[3].data.apiData.hierarchy.data,
+    },
+    {
+      type: 'competitorsHt',
+      data: arr[4].data.apiData.hierarchy.data,
+    },
+  ]);
+
 // netwoek personalità v160
 // network competitor account
 // network competior hashtag
@@ -112,4 +143,5 @@ export default {
   getAllTrendHashtagData,
   getTrendHashtagDataBy,
   getAllNetworksData,
+  getAllHierarchiesData,
 };
