@@ -193,7 +193,7 @@ class ChordHashtag extends Component {
               doesSelectExist
               selectOptions={['5', '10', '20', '30', '40', '50']}
               selectedOption="5"
-              graphExplanation={graphExplanation[0]}
+              graphExplanation={graphExplanation[3]}
               doesCalendarExist
               getActivityInvolvementDates={this.handleCalendar}
               formatDataForLineChart={this.handleSelect}
@@ -205,7 +205,7 @@ class ChordHashtag extends Component {
               doesSelectExist
               selectOptions={['5', '10', '20', '30', '40', '50']}
               selectedOption="5"
-              graphExplanation={graphExplanation[0]}
+              graphExplanation={graphExplanation[3]}
               doesCalendarExist
               getActivityInvolvementDates={this.handleCalendar2}
               formatDataForLineChart={this.handleSelect2}

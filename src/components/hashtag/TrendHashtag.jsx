@@ -67,8 +67,8 @@ class TrendHashtag extends Component {
   getAllTrendHashtagDataByDates = (startDate, endDate, selectedOption) => {
     Api.getAllTrendAccountData(startDate, endDate).then(res => {
       this.setState({
-        luissActivity: res[0].activity,
-        luissInvolvement: res[0].involvement,
+        hashtagLuissActivity: res[0].activity,
+        hashtagLuissInvolvement: res[0].involvement,
       });
       this.formatDataForLineChart(
         selectedOption,
@@ -107,6 +107,9 @@ class TrendHashtag extends Component {
   formatDataForLineChart = (ent, setOfDataAct, setOfDataInv) => {
     const entityDataAct = Helper.getSingleEntityData(ent, setOfDataAct) || [];
     const entityDataInv = Helper.getSingleEntityData(ent, setOfDataInv) || [];
+    console.log(setOfDataAct);
+    console.log(setOfDataInv);
+    console.log(ent);
     const entityDaysAct = entityDataAct.days || [];
     const entityDaysInv = entityDataInv.days || [];
 
@@ -206,11 +209,11 @@ class TrendHashtag extends Component {
                 this.state.hashtagLuissActivity,
                 this.state.hashtagLuissInvolvement
               )}
-              selectedOption="luiss"
+              selectedOption="luiss guido carli"
               formatDataForLineChart={this.updateChartByEntity}
               getActivityInvolvementDates={this.getAllTrendHashtagDataByDates}
-              selectedOption="luiss"
               doesCalendarExist
+              graphExplanation={graphExplanation[3]}
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <LineChart
@@ -250,6 +253,7 @@ class TrendHashtag extends Component {
               handleCheck={this.handleCheck}
               getActivityInvolvementDates={this.getAllTrendHashtagDataByDates}
               doesCalendarExist
+              graphExplanation={graphExplanation[3]}
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <BarChart

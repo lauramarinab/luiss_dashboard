@@ -92,6 +92,7 @@ export default class NetworkCharts extends Component {
               chartTitle="Quali hashtag vengono citati di più negli stessi tweet di Luiss?"
               getActivityInvolvementDates={this.getNetworkDataByDate}
               doesCalendarExist
+              graphExplanation={graphExplanation[3]}
             >
               <div className="sigma">
                 <Sigma
@@ -119,6 +120,7 @@ export default class NetworkCharts extends Component {
               chartTitle="Quali hashtag vengono citati di più negli stessi tweet dei competitors di Luiss?"
               getActivityInvolvementDates={this.getNetworkDataByDate}
               doesCalendarExist
+              graphExplanation={graphExplanation[3]}
             >
               <div className="sigma">
                 <Sigma

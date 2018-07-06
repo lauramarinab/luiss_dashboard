@@ -92,6 +92,7 @@ export default class NetworkCharts extends Component {
               chartTitle="Quali account Luiss parlano degli stessi argomenti?"
               getActivityInvolvementDates={this.getNetworkDataByDate}
               doesCalendarExist
+              graphExplanation={graphExplanation[3]}
             >
               <div className="sigma">
                 <Sigma
@@ -119,6 +120,7 @@ export default class NetworkCharts extends Component {
               chartTitle="Quali competitors di Luiss parlano degli stessi argomenti?"
               getActivityInvolvementDates={this.getNetworkDataByDate}
               doesCalendarExist
+              graphExplanation={graphExplanation[3]}
             >
               <div className="sigma">
                 <Sigma
