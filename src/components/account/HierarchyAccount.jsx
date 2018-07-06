@@ -8,7 +8,6 @@ import Api from '../../data/apiCalls';
 
 export default class HierarchyAccount extends Component {
   state = {
-    // data: null,
     hierarchyGraphs: [[{}]],
     isLoading: true,
   };
@@ -18,7 +17,6 @@ export default class HierarchyAccount extends Component {
       const hierarchyAccount = res[0];
       const hierarchyPersonalità = res[1];
       const hierarchyCompetitors = res[2];
-      console.log(hierarchyAccount.data);
 
       const graphHierarchyAccount = this.createHierarchies(
         'hierarchyAccount',
@@ -32,9 +30,6 @@ export default class HierarchyAccount extends Component {
         'hierarchyCompetitors',
         hierarchyCompetitors.data
       );
-      console.log(graphHierarchyAccount.hierarchyAccount);
-
-      // console.log(this.state.hierarchyGraphs);
 
       this.setState({
         hierarchyGraphs: [
@@ -44,11 +39,7 @@ export default class HierarchyAccount extends Component {
         ],
         isLoading: false,
       });
-
-      // console.log(res[0]);
-      console.log('ciao');
-
-      // console.log(this.state.hierarchyGraphs[0]);
+      console.log(this.state.hierarchyGraphs[1]);
     });
   }
 
@@ -84,16 +75,30 @@ export default class HierarchyAccount extends Component {
     };
   };
 
+  handleClick(nodeObj, cont) {
+    if (!cont || nodeObj._collapsed) return;
+    const myRef = this.refs.myRef;
+    const parentObj = nodeObj.parent;
+    if (parentObj && myRef) {
+      const nodesToBeCollapsed = parentObj.children.filter(
+        c => c.id !== nodeObj.id
+      );
+      nodesToBeCollapsed.map((ndObj, index) => {
+        if (!ndObj._collapsed) myRef.handleNodeToggle(ndObj.id, false);
+      });
+    }
+  }
+
   render() {
     const svgShape = {
-      shape: 'rect',
+      shape: 'circle',
       shapeProps: {
         width: 20,
         height: 20,
         r: 10,
         x: -10,
         y: -10,
-        fill: '#ee6f44',
+        // fill: '#ee6f44',
       },
     };
     return (
@@ -101,16 +106,40 @@ export default class HierarchyAccount extends Component {
         {this.state.isLoading && <Spinner />}
         {!this.state.isLoading && (
           <React.Fragment>
-            <Chart chartTitle="Lorem ipsum?">
+            <Chart chartTitle="Quali account Luiss hanno utilizzato lo stesso hashtag?">
               <div className="tree__container">
                 <Tree
                   data={this.state.hierarchyGraphs[0]}
                   separation={{ siblings: 0.4, nonSiblings: 0.25 }}
                   translate={{ x: 450, y: 100 }}
+                  initialDepth={1}
                   zoom={0.7}
                   pathFun="elbow"
-                  depthFactor="200"
+                  depthFactor="150"
                   collapsible="true"
+                  nodeSize={{ x: 100, y: 160 }}
+                  textLayout={{
+                    textAnchor: 'end',
+                    x: -10,
+                    y: 15,
+                    transform: 'rotate(-45)',
+                  }}
+                  nodeSvgShape={svgShape}
+                  orientation="vertical"
+                />
+              </div>
+            </Chart>
+            <Chart chartTitle="Chi nel mondo Luiss ha utilizzato lo stesso hashtag?">
+              <div className="tree__container">
+                <Tree
+                  data={this.state.hierarchyGraphs[1]}
+                  separation={{ siblings: 0.4, nonSiblings: 0.25 }}
+                  initialDepth={1}
+                  translate={{ x: 450, y: 100 }}
+                  zoom={0.7}
+                  pathFun="elbow"
+                  depthFactor="150"
+                  collapsible
                   nodeSize={{ x: 100, y: 160 }}
                   textLayout={{
                     textAnchor: 'end',
@@ -126,34 +155,13 @@ export default class HierarchyAccount extends Component {
             <Chart chartTitle="Lorem ipsum?">
               <div className="tree__container">
                 <Tree
-                  data={this.state.hierarchyGraphs[1]}
-                  separation={{ siblings: 0.4, nonSiblings: 0.25 }}
-                  translate={{ x: 450, y: 100 }}
-                  zoom={0.7}
-                  pathFun="elbow"
-                  depthFactor="200"
-                  collapsible="true"
-                  nodeSize={{ x: 100, y: 160 }}
-                  textLayout={{
-                    textAnchor: 'end',
-                    x: -10,
-                    y: 15,
-                    transform: 'rotate(-45)',
-                  }}
-                  // nodeSvgShape={svgShape}
-                  orientation="vertical"
-                />
-              </div>
-            </Chart>
-            <Chart chartTitle="Lorem ipsum?">
-              <div className="tree__container">
-                <Tree
                   data={this.state.hierarchyGraphs[2]}
                   separation={{ siblings: 0.4, nonSiblings: 0.25 }}
                   translate={{ x: 450, y: 100 }}
+                  initialDepth={1}
                   zoom={0.7}
                   pathFun="elbow"
-                  depthFactor="200"
+                  depthFactor="150"
                   collapsible="true"
                   nodeSize={{ x: 100, y: 160 }}
                   textLayout={{
@@ -162,7 +170,7 @@ export default class HierarchyAccount extends Component {
                     y: 15,
                     transform: 'rotate(-45)',
                   }}
-                  // nodeSvgShape={svgShape}
+                  nodeSvgShape={svgShape}
                   orientation="vertical"
                 />
               </div>
