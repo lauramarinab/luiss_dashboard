@@ -1,0 +1,44 @@
+div>h3{
+  color: #7BA97D;
+  margin-top: -17px;
+  font-size: 20px;
+}
+
+div>p{
+  color: #585858;
+  margin-top: 20px;
+}
+.cards-wrapper{
+  position: relative;
+  flex-direction: column;
+  display: flex;
+  padding: 3rem 2.5rem;
+  width: 20%;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 1px 6px 0px rgba(182, 182, 182, 0.589);
+}
+
+.bottone{
+  position:absolute;
+  bottom: 0.7rem;
+  left: 209px;
+}
+
+.bottone-card{
+  position: absolute;
+  margin-top: 0.4rem;
+  left: 80%;
+}
+
+.icon {
+  transform: rotate(-180deg);
+  width: 10px;
+  margin-top: 80%;
+}
+
+.icon:hover{
+  opacity: 0.5;
+  color:#6D7EB0;
+}
+
