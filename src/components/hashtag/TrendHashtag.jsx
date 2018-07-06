@@ -8,14 +8,11 @@ import {
   Tooltip,
   Legend,
   LabelList,
-  Label,
   ResponsiveContainer,
   BarChart,
   Bar,
-  PieChart,
-  Pie,
 } from 'recharts';
-import Moment from 'moment';
+
 import Api from '../../data/apiCalls';
 import './../../css/chart.css';
 import Spinner from './../Spinner';
@@ -50,8 +47,8 @@ class TrendHashtag extends Component {
         isLoading: false,
         hashtagLuissActivity: res[0].activity,
         hashtagLuissInvolvement: res[0].involvement,
-        // hashtagCompetitorsActivity: res[1].activity,
-        // hashtagCompetitorsInvolvement: res[1].involvement,
+        hashtagCompetitorsActivity: res[1].activity,
+        hashtagCompetitorsInvolvement: res[1].involvement,
         hashtagLuissBehaviour: hashtagLuissActivityFormatted,
         typeOfData: 'Attività',
       });

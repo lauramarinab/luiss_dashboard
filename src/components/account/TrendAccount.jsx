@@ -8,14 +8,10 @@ import {
   Tooltip,
   Legend,
   LabelList,
-  Label,
   ResponsiveContainer,
   BarChart,
   Bar,
-  PieChart,
-  Pie,
 } from 'recharts';
-import Moment from 'moment';
 import Api from '../../data/apiCalls';
 import './../../css/chart.css';
 import Spinner from './../Spinner';
