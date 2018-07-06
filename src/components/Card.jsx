@@ -9,12 +9,12 @@ export default class Card extends Component {
     console.log(this.props.path);
     return (
       <div className="cards-wrapper">
-        <h3> {this.props.titleCard}</h3>
-        <p> {this.props.resultCard} </p>
+        <h3 className="card-title"> {this.props.titleCard}</h3>
+        <p className="card-result"> {this.props.resultCard} </p>
         <div className="card">
           <Link exact to={this.props.path}>
-            <div className="bottone">
-              <img src={arrow} alt="" className="icon" />
+            <div className="card-bottone">
+              <img src={arrow} alt="" className="card-icon" />
             </div>
           </Link>
         </div>

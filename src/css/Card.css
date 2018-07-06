@@ -1,44 +1,69 @@
-div>h3{
+.card-title {
   color: #7BA97D;
-  margin-top: -17px;
-  font-size: 20px;
+  /* margin-top: -17px; */
+  font-size: 14px;
+  margin-bottom: 0.5rem;
 }
 
-div>p{
+.card-result {
   color: #585858;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 .cards-wrapper{
+  text-align: center;
   position: relative;
   flex-direction: column;
   display: flex;
-  padding: 3rem 2.5rem;
-  width: 20%;
+  flex: 0 0 100%;
+  padding: 1rem;
+  /* width: 20%; */
   background-color: white;
   overflow: hidden;
   box-shadow: 0 1px 6px 0px rgba(182, 182, 182, 0.589);
+  margin-bottom: 2rem;
 }
 
-.bottone{
+.card-bottone{
   position:absolute;
   bottom: 0.7rem;
   left: 209px;
 }
 
-.bottone-card{
+/* .bottone-card{
   position: absolute;
   margin-top: 0.4rem;
   left: 80%;
-}
+} */
 
-.icon {
+.card-icon {
   transform: rotate(-180deg);
   width: 10px;
   margin-top: 80%;
 }
 
-.icon:hover{
+.card-icon:hover{
   opacity: 0.5;
   color:#6D7EB0;
 }
 
+@media screen and (min-width: 480px) {
+  .card-title {
+    /* color: #7BA97D;
+    margin-top: -17px; */
+    font-size: 16px;
+  }
+  .cards-wrapper {
+    flex: 0 0 40%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .card-title {
+    /* color: #7BA97D;
+    margin-top: -17px; */
+    font-size: 20px;
+  }
+  .cards-wrapper {
+    flex: 0 0 20%;
+  }
+}

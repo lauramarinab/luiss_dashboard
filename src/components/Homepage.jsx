@@ -9,17 +9,21 @@ class Homepage extends Component {
   componentDidMount() {
     const today = new Date();
     console.log(today);
-    const yesterday = today.setDate(today.getDate() - 1);
+    const yesterday = today.setDate(today.getDate() - 7);
     const yesterdayDay = Moment(yesterday).format('YYYY-MM-DD');
     console.log('yesterday', yesterdayDay);
   }
 
   render() {
     return (
-      <div className="container-homepage">
-        <h1>Benvenuto,</h1>
-        <h2>Il riassunto delle tue attività di ieri</h2>
-        <div className="homepage-cards-wrapper">
+      <div className="container-homepage ">
+        <h2 className="homepage-title">
+          Benvenuta Alessandra,{' '}
+          <small className="homepage-subtitle">
+            ecco i dati twitter LUISS aggiornati degli ultimi sette giorni
+          </small>
+        </h2>
+        <div className="homepage-cards-wrapper container-charts">
           <Card
             titleCard="ACCOUNT PIÙ ATTIVO"
             resultCard="Louiss Guido Carli"
@@ -41,10 +45,6 @@ class Homepage extends Component {
             path="/hashtag/trend"
           />
         </div>
-        {/* <div className="charts-wrapper">
-          <TrendAccount />
-          <ChordAccount />
-        </div> */}
       </div>
     );
   }
