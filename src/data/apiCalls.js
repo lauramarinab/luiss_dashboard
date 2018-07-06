@@ -21,13 +21,21 @@ const getDataBy = (version, chart, type, startDate, endDate, limit) =>
     `http://165.227.158.131/dp/api/${version}/${chart}/twitter/${type}/range/${startDate}/${endDate}/${limit}`
   );
 
+const getHierarchyDataBy = (version, chart, type, limit) =>
+  Axios.get(
+    `http://165.227.158.131/dp/api/${version}/${chart}/twitter/${type}/${limit}`
+  );
+
+// http://165.227.158.131/dp/api/v155/hierarchy/twitter/ma/100
+
 const getAllHierarchiesData = () =>
   Axios.all([
-    getDataBy('v155', 'hierarchy', 'ma', '2018-04-03', '2018-05-24', 100),
-    getDataBy('v160', 'hierarchy', 'ma', '2018-04-03', '2018-05-24', 100),
-    getDataBy('v158', 'hierarchy', 'ma', '2018-04-03', '2018-05-24', 100),
-    getDataBy('v155', 'hierarchy', 'ht', '2018-04-03', '2018-05-24', 100),
-    getDataBy('v158', 'hierarchy', 'ht', '2018-04-03', '2018-05-24', 100),
+    getHierarchyDataBy('v155', 'hierarchy', 'ma', 100),
+    getHierarchyDataBy('v160', 'hierarchy', 'ma', 100),
+    getHierarchyDataBy('v158', 'hierarchy', 'ma', 100),
+    getHierarchyDataBy('v155', 'hierarchy', 'ht', 3),
+    getHierarchyDataBy('v160', 'hierarchy', 'ht', 3),
+    getHierarchyDataBy('v158', 'hierarchy', 'ht', 3),
   ]).then(arr => [
     {
       type: 'accountMa',
@@ -46,8 +54,12 @@ const getAllHierarchiesData = () =>
       data: arr[3].data.apiData.hierarchy.data,
     },
     {
-      type: 'competitorsHt',
+      type: 'personalitàHt',
       data: arr[4].data.apiData.hierarchy.data,
+    },
+    {
+      type: 'competitorsHt',
+      data: arr[5].data.apiData.hierarchy.data,
     },
   ]);
 
