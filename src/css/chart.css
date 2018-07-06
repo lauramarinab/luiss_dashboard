@@ -247,20 +247,6 @@
   }
 }
 
-/* Network Chart */
-
-.sigma-mouse {
-  /* display: none; */
-}
-
-.sigma-scene {
-  /* padding: 2rem; */
-}
-
-.chart-background:last-child {
-  /* padding-bottom: 2rem; */
-}
-
 /* Calendar */
 
 .ui-button.ui-widget.ui-state-default.ui-corner-all.ui-datepicker-trigger.ui-calendar-button.ui-button-icon-only {
@@ -449,4 +435,16 @@
 
 .chord svg>g>g {
   transform: scale(0.8);
+  /* Hierarchy Chart */
+}
+
+.tree__container {
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.nodeBase:first-of-type .nodeNameBase {
+  transform: translateX(-10px) translateY(-4%) !important;
 }

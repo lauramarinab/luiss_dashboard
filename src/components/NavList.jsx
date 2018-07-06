@@ -48,7 +48,7 @@ class NavList extends Component {
                 <NavLink
                   activeClassName="isActive"
                   exact
-                  to="/account/hierarchies"
+                  to="/account/hierarchy"
                 >
                   Hierarchies
                 </NavLink>
@@ -86,7 +86,7 @@ class NavList extends Component {
                 <NavLink
                   activeClassName="isActive"
                   exact
-                  to="/hashtag/hierarchies"
+                  to="/hashtag/hierarchy"
                 >
                   Hierarchies
                 </NavLink>
