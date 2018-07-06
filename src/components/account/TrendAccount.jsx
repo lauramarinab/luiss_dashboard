@@ -186,6 +186,58 @@ class TrendAccount extends Component {
     return peopleForDoubleBarChart;
   };
 
+  formatDataForDoubleBarChartCompetitor = () => {
+    const competitorsActivity = this.state.competitorsActivity;
+    const competitorsInvolvement = this.state.competitorsInvolvement;
+
+    const competitorsActivityFormatted = competitorsActivity.map(el =>
+      Helper.changeProp('frequency', 'Attività', el)
+    );
+
+    const competitorsInvolvementFormatted = competitorsInvolvement.map(el =>
+      Helper.changeProp('frequency', 'Coinvolgimento', el)
+    );
+
+    const entities = Helper.getAllEntities(
+      this.state.competitorsActivity,
+      this.state.competitorsInvolvement
+    );
+
+    const createCompetitorsAccount = entità => {
+      const entitàAttività = competitorsActivityFormatted.find(
+        el => el.entity === entità
+      );
+      const entitàCoinvolgimento = competitorsInvolvementFormatted.find(
+        el => el.entity === entità
+      );
+
+      if (!entitàAttività) {
+        return {
+          Attività: 0,
+          Coinvolgimento: Helper.formatDecimalData(
+            entitàCoinvolgimento.Coinvolgimento
+          ),
+          entity: entità,
+        };
+      } else if (!entitàCoinvolgimento) {
+        return {
+          Attività: entitàAttività.Attività,
+          Coinvolgimento: 0,
+          entity: entità,
+        };
+      }
+      return {
+        Attività: entitàAttività.Attività,
+        Coinvolgimento: Helper.formatDecimalData(
+          entitàCoinvolgimento.Coinvolgimento
+        ),
+        entity: entità,
+      };
+    };
+    const competitorsForDoubleBarChart = entities.map(createCompetitorsAccount);
+    return competitorsForDoubleBarChart;
+  };
+
   updateBarchart = (startDate, endDate) => {
     Api.getTrendAccountDataBy('v155', 'involvement', startDate, endDate).then(
       res => {
@@ -206,6 +258,17 @@ class TrendAccount extends Component {
         peopleInvolvement: res[1].involvement,
       });
       this.formatDataForDoubleBarChart();
+    });
+  };
+
+  updateDoubleBarchartCompetitors = (startDate, endDate) => {
+    Api.getAllTrendAccountData(startDate, endDate).then(res => {
+      console.log('ciao');
+      this.setState({
+        competitorsActivity: res[2].activity,
+        competitorsInvolvement: res[2].involvement,
+      });
+      this.formatDataForDoubleBarChartCompetitor();
     });
   };
 
@@ -312,70 +375,41 @@ class TrendAccount extends Component {
                   width={730}
                   height={250}
                   data={this.formatDataForDoubleBarChart()}
-                  // layout="vertical"
                   margin={{ top: 10, right: 20, left: 10, bottom: 60 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis
                     dataKey="entity"
-                    // type="category"
                     minTickGap={-300}
                     textAnchor="end"
                     angle={-40}
                     style={{ fontSize: 12, fontWeight: 100 }}
                   />
-                  <YAxis
-                    // type="number"
-                    style={{ fontSize: 12, fontWeight: 100 }}
-                  />
+                  <YAxis style={{ fontSize: 12, fontWeight: 100 }} />
                   <Tooltip />
                   <Legend verticalAlign="top" />
-                  <Bar dataKey="Attività" fill="#ca4f24">
-                    {/* <LabelList
-                      dataKey="entity"
-                      position="insideBottomLeft"
-                      angle={-90}
-                      style={{ fontSize: 12, fontWeight: 100 }}
-                      offset={17}
-                    /> */}
-                  </Bar>
+                  <Bar dataKey="Attività" fill="#ca4f24" />
                   <Bar dataKey="Coinvolgimento" fill="#6d7eb0" />
                 </BarChart>
               </ResponsiveContainer>
             </Chart>
-            {/* <Chart
-              chartTitle="Quale competitor è più attivo?"
-              doesSelectExist={false}
-              doesCalendarExist
-            >
-              <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
-                <PieChart width={730} height={250}>
-                  <Tooltip />
-                  <Pie
-                    data={this.state.competitorsActivity}
-                    dataKey="frequency"
-                    nameKey="entity"
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={60}
-                    outerRadius={80}
-                    fill="#ca4f24"
-                    label
-                  />
-                </PieChart>
-              </ResponsiveContainer>
-            </Chart>
             <Chart
-              chartTitle="Quale competitor coinvolge di più?"
+              chartTitle="Quale competitor di Luiss è più attivo e coinvolgente?"
               doesSelectExist={false}
+              graphExplanation={graphExplanation[3]}
+              getActivityInvolvementDates={this.updateDoubleBarchartCompetitors}
               doesCalendarExist
             >
-              <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
+              <ResponsiveContainer
+                width="95%"
+                aspect={4.0 / 3.0}
+                className="legend--align-top"
+              >
                 <BarChart
                   width={730}
                   height={250}
-                  data={[]}
-                  margin={{ top: 40, right: 20, left: 10, bottom: 20 }}
+                  data={this.formatDataForDoubleBarChartCompetitor()}
+                  margin={{ top: 10, right: 20, left: 10, bottom: 60 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis
@@ -383,22 +417,16 @@ class TrendAccount extends Component {
                     minTickGap={-300}
                     textAnchor="end"
                     angle={-40}
-                    style={{ fontSize: 0, fontWeight: 100 }}
+                    style={{ fontSize: 12, fontWeight: 100 }}
                   />
                   <YAxis style={{ fontSize: 12, fontWeight: 100 }} />
                   <Tooltip />
-                  <Bar dataKey="frequency" fill="#a6ba66">
-                    <LabelList
-                      dataKey="entity"
-                      position="insideBottomLeft"
-                      angle={-90}
-                      style={{ fontSize: 12, fontWeight: 100 }}
-                      offset={17}
-                    />
-                  </Bar>
+                  <Legend verticalAlign="top" />
+                  <Bar dataKey="Attività" fill="#ca4f24" />
+                  <Bar dataKey="Coinvolgimento" fill="#6d7eb0" />
                 </BarChart>
               </ResponsiveContainer>
-            </Chart> */}
+            </Chart>
           </React.Fragment>
         )}
       </div>
