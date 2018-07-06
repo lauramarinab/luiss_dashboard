@@ -93,7 +93,7 @@ export default class HierarchyHashtag extends Component {
         {this.state.isLoading && <Spinner />}
         {!this.state.isLoading && (
           <React.Fragment>
-            <Chart chartTitle="Lorem ipsum?">
+            <Chart chartTitle="Quali hashtag vengono citati di più negli stessi tweet di Luiss?">
               <div className="tree__container">
                 <Tree
                   data={this.state.hierarchyTweetGraphs[0]}
@@ -116,7 +116,7 @@ export default class HierarchyHashtag extends Component {
                 />
               </div>
             </Chart>
-            <Chart chartTitle="Lorem ipsum?">
+            <Chart chartTitle="Quali hashtag vengono citati di più dalle personalità intorno al mondo Luiss?">
               <div className="tree__container">
                 <Tree
                   data={this.state.hierarchyTweetGraphs[1]}
@@ -139,7 +139,7 @@ export default class HierarchyHashtag extends Component {
                 />
               </div>
             </Chart>
-            <Chart chartTitle="Lorem ipsum?">
+            <Chart chartTitle="Quali hashtag vengono citati di più negli stessi tweet dei competitors di Luiss?">
               <div className="tree__container">
                 <Tree
                   data={this.state.hierarchyTweetGraphs[2]}
