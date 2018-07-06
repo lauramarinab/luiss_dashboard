@@ -19,7 +19,8 @@ class ChordAccount extends Component {
     endDate: '2018-05-30',
     com: '',
     acc: '',
-    limit: 5,
+    limit1: 5,
+    limit2: 5,
   };
 
   componentDidMount() {
@@ -107,7 +108,14 @@ class ChordAccount extends Component {
   }
 
   handleCalendar = (starttDate, endDatte) => {
-    Api.getDataBy('v155', 'chord', 'ma', starttDate, endDatte, 5).then(data => {
+    Api.getDataBy(
+      'v155',
+      'chord',
+      'ma',
+      starttDate,
+      endDatte,
+      this.state.limit1
+    ).then(data => {
       const account = data.data.apiData.chord.data;
       this.setState({
         accountMa: data.data.apiData.chord.data,
@@ -126,7 +134,7 @@ class ChordAccount extends Component {
       'ma',
       starttDate,
       endDatte,
-      this.state.limit
+      this.state.limit2
     ).then(data => {
       const competitor = data.data.apiData.chord.data;
       this.setState({
@@ -145,7 +153,7 @@ class ChordAccount extends Component {
       'ma',
       this.state.startDate,
       this.state.endDate,
-      this.state.limit
+      limite
     ).then(data => {
       const account = data.data.apiData.chord.data;
       this.setState({
@@ -181,7 +189,7 @@ class ChordAccount extends Component {
         {!this.state.isLoading && (
           <React.Fragment>
             <Chart
-              chartTitle="Quali sono i top 10 account che hanno utilizzato almeno un hashtag insieme?"
+              chartTitle="Quali sono gli account che hanno utilizzato almeno un hashtag insieme?"
               doesSelectExist
               selectOptions={['5', '10', '20', '30', '40', '50']}
               selectedOption="5"
@@ -193,7 +201,7 @@ class ChordAccount extends Component {
               <Chord matrix={this.acc} names={this.state.acc} />
             </Chart>
             <Chart
-              chartTitle="Quali sono i top 10 account che hanno utilizzato almeno un hashtag insieme?"
+              chartTitle="Quali sono i competitor che hanno utilizzato almeno un hashtag insieme?"
               doesSelectExist
               selectOptions={['5', '10', '20', '30', '40', '50']}
               selectedOption="5"
