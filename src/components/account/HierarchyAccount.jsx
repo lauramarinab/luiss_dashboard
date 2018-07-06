@@ -111,8 +111,8 @@ export default class HierarchyAccount extends Component {
                 <Tree
                   data={this.state.hierarchyGraphs[0]}
                   separation={{ siblings: 0.4, nonSiblings: 0.25 }}
-                  translate={{ x: 450, y: 100 }}
                   initialDepth={1}
+                  translate={{ x: 450, y: 100 }}
                   zoom={0.7}
                   pathFun="elbow"
                   depthFactor="150"
@@ -133,8 +133,8 @@ export default class HierarchyAccount extends Component {
               <div className="tree__container">
                 <Tree
                   data={this.state.hierarchyGraphs[1]}
-                  separation={{ siblings: 0.4, nonSiblings: 0.25 }}
                   initialDepth={1}
+                  separation={{ siblings: 0.4, nonSiblings: 0.25 }}
                   translate={{ x: 450, y: 100 }}
                   zoom={0.7}
                   pathFun="elbow"
@@ -152,13 +152,13 @@ export default class HierarchyAccount extends Component {
                 />
               </div>
             </Chart>
-            <Chart chartTitle="Lorem ipsum?">
+            <Chart chartTitle="Quali competitors di Luiss hanno utilizzato lo stesso hashtag?">
               <div className="tree__container">
                 <Tree
                   data={this.state.hierarchyGraphs[2]}
                   separation={{ siblings: 0.4, nonSiblings: 0.25 }}
-                  translate={{ x: 450, y: 100 }}
                   initialDepth={1}
+                  translate={{ x: 450, y: 100 }}
                   zoom={0.7}
                   pathFun="elbow"
                   depthFactor="150"
