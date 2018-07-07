@@ -1,0 +1,78 @@
+.wrapper-tweet {
+  position: relative;
+  width: 100%;
+  position: relative;
+  padding: 1rem;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 1px 6px 0px rgba(182, 182, 182, 0.589);
+  margin-bottom: 2rem;
+  min-width: 160px;
+  color: var(--darkGrey);
+}
+
+.username-tweet {
+  color: var(--denim);
+  text-align: left;
+  font-size: 16px;
+}
+
+.user-name {
+  font-size: 15px;
+  /* color: var(--mediumGrey); */
+}
+
+.icon-retweet {
+  width: 20px;
+  margin-right: 5px;
+  position: relative;
+  top: -3px;
+}
+
+.footer-tweet {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 100;
+  letter-spacing: 1px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+
+
+.data-tweet {
+  color: var(--lightGrey);
+}
+
+.re-tweet {
+  display: flex;
+  align-items: center;
+  color: var(--denim);
+  margin-right: 32px;
+}
+
+.text-tweet {
+  margin: 15px 0 35px 0;
+}
+
+@media screen and (min-width: 480px) {
+  .sidebar__open+* .wrapper-tweet {
+    flex: 0 0 48%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .sidebar__open+* .wrapper-tweet {
+    flex: 0 0 48%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .wrapper-tweet {
+    flex: 0 0 48%;
+  }
+}

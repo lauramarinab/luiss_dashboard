@@ -7,6 +7,7 @@ import ChordAccount from './account/ChordAccount';
 import Api from './../data/apiCalls';
 import Helper from './../helper';
 import Tweet from './../data/tweet.json';
+import TweetCard from './TweetCard';
 
 class Homepage extends Component {
   state = {
@@ -18,6 +19,7 @@ class Homepage extends Component {
     firstHashtagActFreq: '',
     firstHashtagInvEnt: '',
     firstHashtagInvFreq: '',
+    tweets: [],
   };
   componentDidMount() {
     console.log(Moment(Tweet[0].created_at).format('YYYY-MM-DD'));
@@ -69,12 +71,22 @@ class Homepage extends Component {
         ),
       });
     });
-    const today = new Date();
 
-    const yesterday = today.setDate(today.getDate() - 7);
-    const yesterdayFormatted = Moment(yesterday).format('YYYY-MM-DD');
-    const todayFormatted = Moment(today).format('YYYY-MM-DD');
+    const tweetsN = this.createTweets();
+    this.setState({
+      tweets: tweetsN,
+    });
   }
+
+  createTweets = () => {
+    const tweets = [];
+
+    for (let i = 0; i < 10; i++) {
+      tweets.push(Tweet.splice(Math.floor(Math.random() * 1000), 1)[0]);
+    }
+
+    return tweets;
+  };
 
   render() {
     console.log(this.props.location);
@@ -112,6 +124,18 @@ class Homepage extends Component {
             resultNumber={this.state.firstHashtagInvFreq}
             path="/hashtag/trend"
           />
+        </div>
+        <h2 className="title-tweet">Cosa tweetano di Luiss?</h2>
+        <div className="all-tweet">
+          {this.state.tweets.map(tweet => (
+            <TweetCard
+              username={tweet['user.name']}
+              userScreename={tweet['user.screen_name']}
+              text={tweet.text}
+              data={Moment(tweet.created_at).format('DD-MM-YY  hh:mm')}
+              retweetCount={tweet.retweet_count}
+            />
+          ))}
         </div>
       </div>
     );

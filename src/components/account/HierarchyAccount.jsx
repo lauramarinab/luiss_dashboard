@@ -5,6 +5,7 @@ import Chart from './../grafici/Chart';
 import './../../css/chart.css';
 import Spinner from './../Spinner';
 import Api from '../../data/apiCalls';
+import graphExplanation from './../../data/graphExplanations.json';
 
 export default class HierarchyAccount extends Component {
   state = {
@@ -109,12 +110,15 @@ export default class HierarchyAccount extends Component {
         {this.state.isLoading && <Spinner />}
         {!this.state.isLoading && (
           <React.Fragment>
-            <Chart chartTitle="Quali account Luiss hanno utilizzato lo stesso hashtag?">
+            <Chart
+              chartTitle="Quali account Luiss hanno utilizzato lo stesso hashtag?"
+              graphExplanation={graphExplanation[3]}
+            >
               <div className="tree__container">
                 <Tree
                   data={this.state.hierarchyGraphs[0]}
                   separation={{ siblings: 0.4, nonSiblings: 0.25 }}
-                  initialDepth={1}
+                  // initialDepth={1}
                   translate={{ x: 450, y: 100 }}
                   zoom={0.7}
                   pathFun="elbow"
@@ -132,11 +136,14 @@ export default class HierarchyAccount extends Component {
                 />
               </div>
             </Chart>
-            <Chart chartTitle="Chi nel mondo Luiss ha utilizzato lo stesso hashtag?">
+            <Chart
+              chartTitle="Chi nel mondo Luiss ha utilizzato lo stesso hashtag?"
+              graphExplanation={graphExplanation[3]}
+            >
               <div className="tree__container">
                 <Tree
                   data={this.state.hierarchyGraphs[1]}
-                  initialDepth={1}
+                  // initialDepth={1}
                   separation={{ siblings: 0.4, nonSiblings: 0.25 }}
                   translate={{ x: 450, y: 100 }}
                   zoom={0.7}
@@ -155,12 +162,15 @@ export default class HierarchyAccount extends Component {
                 />
               </div>
             </Chart>
-            <Chart chartTitle="Quali competitors di Luiss hanno utilizzato lo stesso hashtag?">
+            <Chart
+              chartTitle="Quali competitors di Luiss hanno utilizzato lo stesso hashtag?"
+              graphExplanation={graphExplanation[3]}
+            >
               <div className="tree__container">
                 <Tree
                   data={this.state.hierarchyGraphs[2]}
                   separation={{ siblings: 0.4, nonSiblings: 0.25 }}
-                  initialDepth={1}
+                  // initialDepth={1}
                   translate={{ x: 450, y: 100 }}
                   zoom={0.7}
                   pathFun="elbow"
