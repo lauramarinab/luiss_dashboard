@@ -63,12 +63,28 @@ class App extends Component {
 
         {/* <PrivateRoute exact path="/" component={Homepage} />
         <PrivateRoute exact path="/account/trend" component={TrendAccount} />
-        <PrivateRoute exact path="/account/network" component={NetworkAccount} />
-        <PrivateRoute exact path="/account/hierarchy" component={HierarchyAccount} />
+        <PrivateRoute
+          exact
+          path="/account/network"
+          component={NetworkAccount}
+        />
+        <PrivateRoute
+          exact
+          path="/account/hierarchy"
+          component={HierarchyAccount}
+        />
         <PrivateRoute exact path="/account/chord" component={ChordAccount} />
         <PrivateRoute exact path="/hashtag/trend" component={TrendHashtag} />
-        <PrivateRoute exact path="/hashtag/network" component={NetworkHashtag} />
-        <PrivateRoute exact path="/hashtag/hierarchy" component={HierarchyHashtag} />
+        <PrivateRoute
+          exact
+          path="/hashtag/network"
+          component={NetworkHashtag}
+        />
+        <PrivateRoute
+          exact
+          path="/hashtag/hierarchy"
+          component={HierarchyHashtag}
+        />
         <PrivateRoute exact path="/hashtag/chord" component={ChordHashtag} /> */}
       </React.Fragment>
     );
