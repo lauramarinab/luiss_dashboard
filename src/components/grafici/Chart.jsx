@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import Axios from 'axios';
 import Select from './Select';
 import Modal from './Modal';
 import Calendario from './Calendar';
 import './../../css/chart.css';
 import infoIcon from './../../img/info.svg';
-// import 'primereact/resources/themes/omega/theme.css';
-// import { Calendar } from 'primereact/components/calendar/Calendar';
-// import 'primereact/resources/primereact.min.css';
-// import 'primeicons/primeicons.css';
 
 class Chart extends Component {
   state = {
@@ -42,8 +37,6 @@ class Chart extends Component {
 
   showSelectedOption = e => {
     const selectedOption = e.target.innerText;
-    // console.log(e.target.innerText);
-    console.log(selectedOption);
     this.setState({
       selectedOption,
     });
@@ -86,12 +79,9 @@ class Chart extends Component {
 
       const startDate = rangeArr[0];
       const endDate = rangeArr[1];
-      console.log(endDate);
       this.props.handleCheck(e.target.value, startDate, endDate);
       return;
     }
-    console.log('check');
-    console.log(e.target.value);
     this.props.handleCheck(e.target.value, '2018-04-01', '2018-05-30');
   };
 
@@ -132,7 +122,7 @@ class Chart extends Component {
                     Attività
                     <input
                       type="radio"
-                      name="radio"
+                      name={this.props.radioName}
                       defaultChecked
                       onChange={e => this.handleRadio(e)}
                       value="activity"
@@ -144,7 +134,7 @@ class Chart extends Component {
                     <input
                       type="radio"
                       defaultChecked={false}
-                      name="radio"
+                      name={this.props.radioName}
                       onChange={e => this.handleRadio(e)}
                       value="involvement"
                     />

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Tree from 'react-d3-tree';
-import axios from 'axios';
 import Chart from './../grafici/Chart';
 import './../../css/chart.css';
 import Spinner from './../Spinner';
@@ -40,7 +39,6 @@ export default class HierarchyAccount extends Component {
         ],
         isLoading: false,
       });
-      console.log(this.state.hierarchyGraphs[1]);
     });
   }
 
@@ -102,7 +100,6 @@ export default class HierarchyAccount extends Component {
         r: 10,
         x: -10,
         y: -10,
-        // fill: '#ee6f44',
       },
     };
     return (
@@ -118,7 +115,6 @@ export default class HierarchyAccount extends Component {
                 <Tree
                   data={this.state.hierarchyGraphs[0]}
                   separation={{ siblings: 0.4, nonSiblings: 0.25 }}
-                  // initialDepth={1}
                   translate={{ x: 450, y: 100 }}
                   zoom={0.7}
                   pathFun="elbow"
@@ -143,7 +139,6 @@ export default class HierarchyAccount extends Component {
               <div className="tree__container">
                 <Tree
                   data={this.state.hierarchyGraphs[1]}
-                  // initialDepth={1}
                   separation={{ siblings: 0.4, nonSiblings: 0.25 }}
                   translate={{ x: 450, y: 100 }}
                   zoom={0.7}
@@ -170,7 +165,6 @@ export default class HierarchyAccount extends Component {
                 <Tree
                   data={this.state.hierarchyGraphs[2]}
                   separation={{ siblings: 0.4, nonSiblings: 0.25 }}
-                  // initialDepth={1}
                   translate={{ x: 450, y: 100 }}
                   zoom={0.7}
                   pathFun="elbow"

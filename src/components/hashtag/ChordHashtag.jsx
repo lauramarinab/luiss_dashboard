@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import Moment from 'moment';
 import Chord from './../grafici/ChordCharts';
 import Api from '../../data/apiCalls';
 import './../../css/chart.css';
 import Spinner from './../Spinner';
 import Chart from './../grafici/Chart';
 import graphExplanation from './../../data/graphExplanations.json';
-import Helper from './../../helper';
-import ChordDiagram from 'react-chord-diagram';
-import axios from 'axios';
 
 class ChordHashtag extends Component {
   state = {
@@ -49,7 +45,6 @@ class ChordHashtag extends Component {
   ProcessData(type, custom) {
     this[custom] = [];
     let data = type;
-    // console.log(data);
     data = Object.values(data);
     const singleList = [];
     let el;

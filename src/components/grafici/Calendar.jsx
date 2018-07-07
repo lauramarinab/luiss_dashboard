@@ -10,11 +10,6 @@ class Calendario extends Component {
     bottone: false,
   };
 
-  // handleFocus = () => {
-  //   // console.log('ciao');
-  //   this.setState({ bottone: !this.state.bottone });
-  // };
-
   render() {
     return (
       <div className="chart__action-select-date">
@@ -30,7 +25,6 @@ class Calendario extends Component {
           selectionMode="range"
           value={this.props.date}
           onChange={this.props.setDateRange}
-          // onChange={e => this.setState({ date: e.value })}
         />
         {this.props.children}
       </div>

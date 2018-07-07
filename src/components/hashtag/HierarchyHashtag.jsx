@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Tree from 'react-d3-tree';
-import axios from 'axios';
 import Chart from './../grafici/Chart';
 import './../../css/chart.css';
 import Spinner from './../Spinner';
@@ -40,8 +39,6 @@ export default class HierarchyHashtag extends Component {
         ],
         isLoading: false,
       });
-
-      console.log(this.state.hierarchyTweetGraphs[0]);
     });
   }
 
@@ -89,7 +86,6 @@ export default class HierarchyHashtag extends Component {
         r: 10,
         x: -10,
         y: -10,
-        // fill: '#ee6f44',
       },
     };
     return (
@@ -105,7 +101,6 @@ export default class HierarchyHashtag extends Component {
                 <Tree
                   data={this.state.hierarchyTweetGraphs[0]}
                   separation={{ siblings: 0.4, nonSiblings: 0.25 }}
-                  // initialDepth={1}
                   translate={{ x: 450, y: 100 }}
                   zoom={0.7}
                   pathFun="diagonal"
@@ -131,7 +126,6 @@ export default class HierarchyHashtag extends Component {
                 <Tree
                   data={this.state.hierarchyTweetGraphs[1]}
                   separation={{ siblings: 0.4, nonSiblings: 0.25 }}
-                  // initialDepth={1}
                   translate={{ x: 450, y: 100 }}
                   zoom={0.7}
                   pathFun="elbow"
@@ -157,7 +151,6 @@ export default class HierarchyHashtag extends Component {
                 <Tree
                   data={this.state.hierarchyTweetGraphs[2]}
                   separation={{ siblings: 0.4, nonSiblings: 0.25 }}
-                  // initialDepth={1}
                   translate={{ x: 450, y: 100 }}
                   zoom={0.7}
                   pathFun="elbow"

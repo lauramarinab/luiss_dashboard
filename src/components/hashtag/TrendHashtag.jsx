@@ -36,8 +36,6 @@ class TrendHashtag extends Component {
 
   componentDidMount() {
     Api.getAllTrendHashtagData('2018-04-01', '2018-05-30').then(res => {
-      console.log(res);
-      // Formatta i dati di involvement
       res.forEach(el => {
         Helper.formatInvolvementFrequencyData(el.involvement);
       });
@@ -94,7 +92,6 @@ class TrendHashtag extends Component {
         const hashtagLuissActivityFormatted = res[0].activity.map(el =>
           Helper.changeProp('frequency', 'Attività', el)
         );
-        // console.log(startDate);
 
         this.setState({
           hashtagLuissBehaviour: hashtagLuissActivityFormatted,
@@ -120,7 +117,6 @@ class TrendHashtag extends Component {
         const hashtagCompetitorActivityFormatted = res[1].activity.map(el =>
           Helper.changeProp('frequency', 'Attività', el)
         );
-        // console.log(startDate);
 
         this.setState({
           hashtagCompetitorBehaviour: hashtagCompetitorActivityFormatted,
@@ -139,9 +135,6 @@ class TrendHashtag extends Component {
   formatDataForLineChart = (ent, setOfDataAct, setOfDataInv) => {
     const entityDataAct = Helper.getSingleEntityData(ent, setOfDataAct) || [];
     const entityDataInv = Helper.getSingleEntityData(ent, setOfDataInv) || [];
-    console.log(setOfDataAct);
-    console.log(setOfDataInv);
-    console.log(ent);
     const entityDaysAct = entityDataAct.days || [];
     const entityDaysInv = entityDataInv.days || [];
 
@@ -209,7 +202,6 @@ class TrendHashtag extends Component {
             hashtagLuissBehaviour: hashtagLuissInvolvement,
             typeOfData: 'Coinvolgimento',
           });
-          console.log(this.state.hashtagLuissBehaviour);
         }
       );
     } else if (behaviour === 'activity') {
@@ -240,7 +232,6 @@ class TrendHashtag extends Component {
             hashtagCompetitorBehaviour: hashtagLuissInvolvement,
             typeOfData2: 'Coinvolgimento',
           });
-          // console.log(this.state.hashtagLuissBehaviour);
         }
       );
     } else if (behaviour === 'activity') {
@@ -319,6 +310,7 @@ class TrendHashtag extends Component {
               }
               doesCalendarExist
               graphExplanation={graphExplanation[3]}
+              radioName="radio"
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <BarChart
@@ -359,6 +351,7 @@ class TrendHashtag extends Component {
               }
               doesCalendarExist
               graphExplanation={graphExplanation[3]}
+              radioName="radio2"
             >
               <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
                 <BarChart

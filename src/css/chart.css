@@ -470,3 +470,10 @@
   stroke: var(--darkGrey) !important;
 }
 
+/* .hashtag-trend-charts .chart:nth-child(3) .container input:checked~.checkmark {
+  background-color: #6d7eb0;
+}
+
+.hashtag-trend-charts .chart:nth-child(3) .container input:checked~.checkmark:after {
+  display: block;
+} */

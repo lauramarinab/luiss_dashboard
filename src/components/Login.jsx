@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Logo from './Logo';
 import '../css/Login.css';
 
@@ -20,7 +20,6 @@ class Login extends Component {
   onPasswordChange = e => {
     const newState = { ...this.state.infoPersona };
     newState.password = e.target.value;
-    // console.log(newState);
     if (
       newState.password.length < 6 ||
       (newState.email && !isEmail(newState.email))

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-// img
 import home from './../img/home.svg';
 import account from './../img/account.svg';
 import hashtag from './../img/hashtag.svg';

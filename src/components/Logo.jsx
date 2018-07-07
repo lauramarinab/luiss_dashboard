@@ -1,11 +1,10 @@
 import React from 'react';
 
 export default () => {
-  // polyfill
   if (!String.prototype.startsWith) {
-    // String.prototype.startsWith = function(search, pos) {
-    //   return this.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search;
-    // };
+    String.prototype.startsWith = function(search, pos) {
+      return this.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search;
+    };
   }
 
   if (!Object.assign) {

@@ -47,7 +47,6 @@ class TrendAccount extends Component {
         peopleInvolvement: res[1].involvement,
         competitorsActivity: res[2].activity,
         competitorsInvolvement: res[2].involvement,
-        // entitiesActivityInvolvement: [],
       });
 
       this.formatDataForLineChart(
@@ -259,7 +258,6 @@ class TrendAccount extends Component {
 
   updateDoubleBarchartCompetitors = (startDate, endDate) => {
     Api.getAllTrendAccountData(startDate, endDate).then(res => {
-      console.log('ciao');
       this.setState({
         competitorsActivity: res[2].activity,
         competitorsInvolvement: res[2].involvement,

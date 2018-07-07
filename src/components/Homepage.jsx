@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Moment from 'moment';
 import Card from './Card';
 import './../css/Homepage.css';
-import TrendAccount from './account/TrendAccount';
-import ChordAccount from './account/ChordAccount';
 import Api from './../data/apiCalls';
 import Helper from './../helper';
 import Tweet from './../data/tweet.json';
@@ -22,7 +20,6 @@ class Homepage extends Component {
     tweets: [],
   };
   componentDidMount() {
-    console.log(Moment(Tweet[0].created_at).format('YYYY-MM-DD'));
     Api.getTrendAccountDataBy(
       'v155',
       'activity',
@@ -89,7 +86,6 @@ class Homepage extends Component {
   };
 
   render() {
-    console.log(this.props.location);
     return (
       <div className="container-homepage ">
         <h2 className="homepage-title">

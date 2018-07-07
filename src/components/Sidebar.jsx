@@ -4,6 +4,7 @@ import NavList from './NavList';
 import arrow from './../img/arrow.svg';
 import logoSmall from './../img/logoSmall.gif';
 import './../css/Sidebar.css';
+import { Link } from 'react-router-dom';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -33,10 +34,14 @@ class Sidebar extends Component {
         onClick={this.handleSidebar}
       >
         {this.state.sidebar ? (
-          <Logo />
+          <Link exact to="/">
+            <Logo />
+          </Link>
         ) : (
-          <img src={logoSmall} alt="" className="logo-small" />
-        )}
+            <Link exact to="/">
+              <img src={logoSmall} alt="" className="logo-small" />
+            </Link>
+          )}
 
         <NavList handleSidebarProp={this.openSidebar} />
         <div className="bottone" onClick={this.handleSidebar}>

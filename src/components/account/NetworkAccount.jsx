@@ -1,30 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Chart from './../grafici/Chart';
 import './../../css/chart.css';
-import arrow from './../../img/arrow.svg';
-import {
-  Sigma,
-  EdgeShapes,
-  NodeShapes,
-  LoadJSON,
-  LoadGEXF,
-  Filter,
-  ForceAtlas2,
-  RelativeSize,
-  NOverlap,
-  NeoCypher,
-  NeoGraphItemsProducers,
-  RandomizeNodePositions,
-  SigmaEnableWebGL,
-} from 'react-sigma';
-import ForceLink from 'react-sigma/lib/ForceLink';
-import Dagre from 'react-sigma/lib/Dagre';
-import { Object } from 'core-js';
+import { Sigma, RelativeSize, RandomizeNodePositions } from 'react-sigma';
 import Api from '../../data/apiCalls';
 import Spinner from './../Spinner';
 import graphExplanation from './../../data/graphExplanations.json';
-import Helper from './../../helper';
 
 export default class NetworkCharts extends Component {
   state = {

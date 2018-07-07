@@ -47,49 +47,39 @@ class App extends Component {
       <React.Fragment>
         <Header />
         <Sidebar />
-        {/* <Route
+        <Route
           exact
           path="/login"
           render={() => <Login fakeAuth={fakeAuth} />}
-        /> */}
+        />
         <Switch>
-          <Route exact path="/" component={Homepage} />
-          <Route exact path="/account/trend" component={TrendAccount} />
-          <Route exact path="/account/network" component={NetworkAccount} />
-          <Route exact path="/account/hierarchy" component={HierarchyAccount} />
-          <Route exact path="/account/chord" component={ChordAccount} />
-          <Route exact path="/hashtag/trend" component={TrendHashtag} />
-          <Route exact path="/hashtag/network" component={NetworkHashtag} />
-          <Route exact path="/hashtag/hierarchy" component={HierarchyHashtag} />
-          <Route exact path="/hashtag/chord" component={ChordHashtag} />
-          <Route exact component={NotFound} />
+          <PrivateRoute exact path="/" component={Homepage} />
+          <PrivateRoute exact path="/account/trend" component={TrendAccount} />
+          <PrivateRoute
+            exact
+            path="/account/network"
+            component={NetworkAccount}
+          />
+          <PrivateRoute
+            exact
+            path="/account/hierarchy"
+            component={HierarchyAccount}
+          />
+          <PrivateRoute exact path="/account/chord" component={ChordAccount} />
+          <PrivateRoute exact path="/hashtag/trend" component={TrendHashtag} />
+          <PrivateRoute
+            exact
+            path="/hashtag/network"
+            component={NetworkHashtag}
+          />
+          <PrivateRoute
+            exact
+            path="/hashtag/hierarchy"
+            component={HierarchyHashtag}
+          />
+          <PrivateRoute exact path="/hashtag/chord" component={ChordHashtag} />
+          <PrivateRoute exact component={NotFound} />
         </Switch>
-
-        {/* <PrivateRoute exact path="/" component={Homepage} />
-        <PrivateRoute exact path="/account/trend" component={TrendAccount} />
-        <PrivateRoute
-          exact
-          path="/account/network"
-          component={NetworkAccount}
-        />
-        <PrivateRoute
-          exact
-          path="/account/hierarchy"
-          component={HierarchyAccount}
-        />
-        <PrivateRoute exact path="/account/chord" component={ChordAccount} />
-        <PrivateRoute exact path="/hashtag/trend" component={TrendHashtag} />
-        <PrivateRoute
-          exact
-          path="/hashtag/network"
-          component={NetworkHashtag}
-        />
-        <PrivateRoute
-          exact
-          path="/hashtag/hierarchy"
-          component={HierarchyHashtag}
-        />
-        <PrivateRoute exact path="/hashtag/chord" component={ChordHashtag} /> */}
       </React.Fragment>
     );
   }
