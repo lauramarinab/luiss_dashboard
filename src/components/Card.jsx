@@ -10,13 +10,14 @@ export default class Card extends Component {
     return (
       <div className="cards-wrapper">
         <h3 className="card-title"> {this.props.titleCard}</h3>
-        <p className="card-result"> {this.props.resultCard} </p>
+        <p className="card-result"> {`#${this.props.resultCard}`} </p>
+        <p className="card-result"> {this.props.resultNumber} </p>
         <div className="card">
-          <Link exact to={this.props.path}>
+          {/* <Link exact to={this.props.path}>
             <div className="card-bottone">
               <img src={arrow} alt="" className="card-icon" />
             </div>
-          </Link>
+          </Link> */}
         </div>
       </div>
     );
