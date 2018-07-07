@@ -435,16 +435,21 @@
 
 .chord svg>g>g {
   transform: scale(0.8);
-  /* Hierarchy Chart */
 }
+/* Hierarchy Chart */
 
 .tree__container {
   height: 500px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
-}
+  }
 
+.nodeBase{
+  fill: red !important;   /* Node with children circle color*/
+}
 .nodeBase:first-of-type .nodeNameBase {
   transform: translateX(-10px) translateY(-4%) !important;
+  stroke: blue; /* Top level label color */
 }
+

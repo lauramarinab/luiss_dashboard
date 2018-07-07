@@ -57,9 +57,9 @@ const getAllHierarchiesData = () =>
     getHierarchyDataBy('v155', 'hierarchy', 'ma', 100),
     getHierarchyDataBy('v160', 'hierarchy', 'ma', 100),
     getHierarchyDataBy('v158', 'hierarchy', 'ma', 100),
-    getHierarchyDataBy('v155', 'hierarchy', 'ht', 3),
-    getHierarchyDataBy('v160', 'hierarchy', 'ht', 3),
-    getHierarchyDataBy('v158', 'hierarchy', 'ht', 3),
+    getHierarchyDataBy('v155', 'hierarchy', 'ht', 100),
+    getHierarchyDataBy('v160', 'hierarchy', 'ht', 100),
+    getHierarchyDataBy('v158', 'hierarchy', 'ht', 100),
   ]).then(arr => [
     {
       type: 'accountMa',

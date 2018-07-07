@@ -48,31 +48,34 @@ export default class HierarchyHashtag extends Component {
     const data = hierarchiesData;
     const splittedArr = data.map(el => el.id.split(';'));
 
-    const arrChildren = splittedArr
-      .filter(el => el.length === 2)
-      .map(el => ({ name: el[1] }));
+    const tree = [];
+    let childrenList = null;
 
-    const nephArr = [];
-    for (let i = 0; i < splittedArr.length; i++) {
-      for (let pos = 2; pos < splittedArr[i].length; pos++) {
-        if (splittedArr[i][pos]) {
-          for (let y = 0; y < arrChildren.length; y++) {
-            if (arrChildren[y].name === splittedArr[i][pos - 1]) {
-              nephArr.push({ name: splittedArr[i][pos] });
-              arrChildren[y].children = nephArr;
-            }
+    function addChildren(childrenList, element) {
+      childrenList.push({ name: element, children: [] });
+    }
+    splittedArr.forEach(element => {
+      childrenList = findChildrenList(element);
+      const name = element.slice(-1)[0];
+      addChildren(childrenList, name);
+    });
+
+    function findChildrenList(element) {
+      const path = element.slice(0, -1);
+      let subtree = tree;
+      for (let i = 0; i < path.length; i++) {
+        for (let j = 0; j < subtree.length; j++) {
+          if (subtree[j].name === path[i]) {
+            subtree = subtree[j].children;
+            break;
           }
         }
       }
+      return subtree;
     }
 
     return {
-      [hierarchiesType]: [
-        {
-          name: splittedArr[0].toString(),
-          children: arrChildren,
-        },
-      ],
+      [hierarchiesType]: tree,
     };
   };
 
@@ -102,7 +105,7 @@ export default class HierarchyHashtag extends Component {
                   translate={{ x: 450, y: 100 }}
                   zoom={0.7}
                   pathFun="diagonal"
-                  depthFactor="150"
+                  depthFactor="200"
                   collapsible="true"
                   nodeSize={{ x: 100, y: 160 }}
                   textLayout={{
@@ -125,7 +128,7 @@ export default class HierarchyHashtag extends Component {
                   translate={{ x: 450, y: 100 }}
                   zoom={0.7}
                   pathFun="elbow"
-                  depthFactor="150"
+                  depthFactor="200"
                   collapsible="true"
                   nodeSize={{ x: 100, y: 160 }}
                   textLayout={{
@@ -148,7 +151,7 @@ export default class HierarchyHashtag extends Component {
                   translate={{ x: 450, y: 100 }}
                   zoom={0.7}
                   pathFun="elbow"
-                  depthFactor="150"
+                  depthFactor="200"
                   collapsible="true"
                   nodeSize={{ x: 100, y: 160 }}
                   textLayout={{
