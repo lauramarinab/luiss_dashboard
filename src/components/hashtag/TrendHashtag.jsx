@@ -29,17 +29,24 @@ class TrendHashtag extends Component {
     hashtagCompetitorsInvolvement: [],
     entitiesActivityInvolvement: [],
     hashtagLuissBehaviour: [],
+    hashtagCompetitorBehaviour: [],
     typeOfData: '',
+    typeOfData2: '',
   };
 
   componentDidMount() {
     Api.getAllTrendHashtagData('2018-04-01', '2018-05-30').then(res => {
+      console.log(res);
       // Formatta i dati di involvement
       res.forEach(el => {
         Helper.formatInvolvementFrequencyData(el.involvement);
       });
 
       const hashtagLuissActivityFormatted = res[0].activity.map(el =>
+        Helper.changeProp('frequency', 'Attività', el)
+      );
+
+      const hashtagCompetitorActivityFormatted = res[1].activity.map(el =>
         Helper.changeProp('frequency', 'Attività', el)
       );
 
@@ -50,7 +57,9 @@ class TrendHashtag extends Component {
         hashtagCompetitorsActivity: res[1].activity,
         hashtagCompetitorsInvolvement: res[1].involvement,
         hashtagLuissBehaviour: hashtagLuissActivityFormatted,
+        hashtagCompetitorBehaviour: hashtagCompetitorActivityFormatted,
         typeOfData: 'Attività',
+        typeOfData2: 'Attività',
       });
 
       this.formatDataForLineChart(
@@ -85,7 +94,7 @@ class TrendHashtag extends Component {
         const hashtagLuissActivityFormatted = res[0].activity.map(el =>
           Helper.changeProp('frequency', 'Attività', el)
         );
-        console.log(startDate);
+        // console.log(startDate);
 
         this.setState({
           hashtagLuissBehaviour: hashtagLuissActivityFormatted,
@@ -96,6 +105,32 @@ class TrendHashtag extends Component {
         );
         this.setState({
           hashtagLuissBehaviour: hashtagLuissInvolvementFormatted,
+        });
+      }
+    });
+  };
+
+  getAllTrendHashtagDataByDatesRadioButtons2 = (
+    startDate,
+    endDate,
+    selectedOption
+  ) => {
+    Api.getAllTrendHashtagData(startDate, endDate).then(res => {
+      if (this.state.typeOfData2 === 'Attività') {
+        const hashtagCompetitorActivityFormatted = res[1].activity.map(el =>
+          Helper.changeProp('frequency', 'Attività', el)
+        );
+        // console.log(startDate);
+
+        this.setState({
+          hashtagCompetitorBehaviour: hashtagCompetitorActivityFormatted,
+        });
+      } else if (this.state.typeOfData2 === 'Coinvolgimento') {
+        const hashtagCompetitorInvolvementFormatted = Helper.formatInvolvementFrequencyData(
+          res[1].involvement
+        );
+        this.setState({
+          hashtagCompetitorBehaviour: hashtagCompetitorInvolvementFormatted,
         });
       }
     });
@@ -193,6 +228,37 @@ class TrendHashtag extends Component {
     }
   };
 
+  handleCheck2 = (behaviour, startDate, endDate) => {
+    if (behaviour === 'involvement') {
+      Api.getTrendHashtagDataBy('v158', 'involvement', startDate, endDate).then(
+        res => {
+          const hashtagLuissInvolvement = Helper.formatInvolvementFrequencyData(
+            res.data.apiData.data
+          );
+
+          this.setState({
+            hashtagCompetitorBehaviour: hashtagLuissInvolvement,
+            typeOfData2: 'Coinvolgimento',
+          });
+          // console.log(this.state.hashtagLuissBehaviour);
+        }
+      );
+    } else if (behaviour === 'activity') {
+      Api.getTrendHashtagDataBy('v158', 'activity', startDate, endDate).then(
+        res => {
+          const hashtagLuissActivity = res.data.apiData.data;
+          const hashtagLuissActivityFormatted = hashtagLuissActivity.map(el =>
+            Helper.changeProp('frequency', 'Attività', el)
+          );
+          this.setState({
+            hashtagCompetitorBehaviour: hashtagLuissActivityFormatted,
+            typeOfData2: 'Attività',
+          });
+        }
+      );
+    }
+  };
+
   render() {
     return (
       <div className="container-charts hashtag-trend-charts">
@@ -244,11 +310,13 @@ class TrendHashtag extends Component {
               </ResponsiveContainer>
             </Chart>
             <Chart
-              chartTitle="Quali sono gli hashtag più attivi o coinvolgenti?"
+              chartTitle="Quali sono gli hashtag usati da Luiss più attivi e coinvolgenti?"
               doesSelectExist={false}
               doesCheckExist
               handleCheck={this.handleCheck}
-              getActivityInvolvementDates={this.getAllTrendHashtagDataByDates}
+              getActivityInvolvementDates={
+                this.getAllTrendHashtagDataByDatesRadioButtons
+              }
               doesCalendarExist
               graphExplanation={graphExplanation[3]}
             >
@@ -270,6 +338,46 @@ class TrendHashtag extends Component {
                   <YAxis style={{ fontSize: 12, fontWeight: 100 }} />
                   <Tooltip />
                   <Bar dataKey={this.state.typeOfData} fill="#a6ba66">
+                    <LabelList
+                      dataKey="entity"
+                      position="insideBottomLeft"
+                      angle={-90}
+                      style={{ fontSize: 12, fontWeight: 100 }}
+                      offset={17}
+                    />
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </Chart>
+            <Chart
+              chartTitle="Quali sono gli hashtag usati dai competitor più attivi e coinvolgenti?"
+              doesSelectExist={false}
+              doesCheckExist
+              handleCheck={this.handleCheck2}
+              getActivityInvolvementDates={
+                this.getAllTrendHashtagDataByDatesRadioButtons2
+              }
+              doesCalendarExist
+              graphExplanation={graphExplanation[3]}
+            >
+              <ResponsiveContainer width="95%" aspect={4.0 / 3.0}>
+                <BarChart
+                  width={730}
+                  height={250}
+                  data={this.state.hashtagCompetitorBehaviour}
+                  margin={{ top: 40, right: 20, left: 10, bottom: 20 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis
+                    dataKey="entity"
+                    minTickGap={-300}
+                    textAnchor="end"
+                    angle={-40}
+                    style={{ fontSize: 0, fontWeight: 100 }}
+                  />
+                  <YAxis style={{ fontSize: 12, fontWeight: 100 }} />
+                  <Tooltip />
+                  <Bar dataKey={this.state.typeOfData2} fill="#a6ba66">
                     <LabelList
                       dataKey="entity"
                       position="insideBottomLeft"
