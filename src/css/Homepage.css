@@ -37,6 +37,28 @@
   /* margin-bottom: 3.5rem ; */
 }
 
+/* Tweet Container */
+.all-tweet {
+  padding: 3rem;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex: 0 0 100%;
+  justify-content: space-between;
+}
+
+.title-tweet {
+  font-size: 20px;
+  font-weight: 100;
+  margin-left: 3rem;
+  margin-bottom: 15px;
+}
+
+.wrapper-tweet:last-child {
+  margin-bottom: 0px;
+}
+
 @media screen and (min-width: 480px) {
   .homepage-title {
     font-size: 20px;
@@ -60,5 +82,8 @@
   }
   .homepage-subtitle {
     font-size: 18px;
+  }
+  .all-tweet {
+    flex-direction: row;
   }
 }

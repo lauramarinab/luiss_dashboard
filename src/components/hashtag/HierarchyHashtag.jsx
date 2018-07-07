@@ -5,6 +5,7 @@ import Chart from './../grafici/Chart';
 import './../../css/chart.css';
 import Spinner from './../Spinner';
 import Api from '../../data/apiCalls';
+import graphExplanation from './../../data/graphExplanations.json';
 
 export default class HierarchyHashtag extends Component {
   state = {
@@ -96,12 +97,15 @@ export default class HierarchyHashtag extends Component {
         {this.state.isLoading && <Spinner />}
         {!this.state.isLoading && (
           <React.Fragment>
-            <Chart chartTitle="Quali hashtag vengono citati di più negli stessi tweet di Luiss?">
+            <Chart
+              chartTitle="Quali hashtag vengono citati di più negli stessi tweet di Luiss?"
+              graphExplanation={graphExplanation[3]}
+            >
               <div className="tree__container">
                 <Tree
                   data={this.state.hierarchyTweetGraphs[0]}
                   separation={{ siblings: 0.4, nonSiblings: 0.25 }}
-                  initialDepth={1}
+                  // initialDepth={1}
                   translate={{ x: 450, y: 100 }}
                   zoom={0.7}
                   pathFun="diagonal"
@@ -119,12 +123,15 @@ export default class HierarchyHashtag extends Component {
                 />
               </div>
             </Chart>
-            <Chart chartTitle="Quali hashtag vengono citati di più dalle personalità intorno al mondo Luiss?">
+            <Chart
+              chartTitle="Quali hashtag vengono citati di più dalle personalità intorno al mondo Luiss?"
+              graphExplanation={graphExplanation[3]}
+            >
               <div className="tree__container">
                 <Tree
                   data={this.state.hierarchyTweetGraphs[1]}
                   separation={{ siblings: 0.4, nonSiblings: 0.25 }}
-                  initialDepth={1}
+                  // initialDepth={1}
                   translate={{ x: 450, y: 100 }}
                   zoom={0.7}
                   pathFun="elbow"
@@ -142,12 +149,15 @@ export default class HierarchyHashtag extends Component {
                 />
               </div>
             </Chart>
-            <Chart chartTitle="Quali hashtag vengono citati di più negli stessi tweet dei competitors di Luiss?">
+            <Chart
+              chartTitle="Quali hashtag vengono citati di più negli stessi tweet dei competitors di Luiss?"
+              graphExplanation={graphExplanation[3]}
+            >
               <div className="tree__container">
                 <Tree
                   data={this.state.hierarchyTweetGraphs[2]}
                   separation={{ siblings: 0.4, nonSiblings: 0.25 }}
-                  initialDepth={1}
+                  // initialDepth={1}
                   translate={{ x: 450, y: 100 }}
                   zoom={0.7}
                   pathFun="elbow"

@@ -436,6 +436,7 @@
 .chord svg>g>g {
   transform: scale(0.8);
 }
+
 /* Hierarchy Chart */
 
 .tree__container {
@@ -446,10 +447,26 @@
   }
 
 .nodeBase{
-  fill: red !important;   /* Node with children circle color*/
+  fill: var(--marino) !important;   /* Node with children circle color*/
+  stroke: var(--darkGrey) !important;
 }
+
 .nodeBase:first-of-type .nodeNameBase {
   transform: translateX(-10px) translateY(-4%) !important;
-  stroke: blue; /* Top level label color */
+  /*stroke: blue;*/ /* Top level label color */
+  color: var(--marino) !important;
+}
+
+.nodeNameBase {
+  fill: var(--darkGrey) !important;
+  stroke: var(--darkGrey) !important;
+}
+
+.linkBase {
+  stroke: var(--darkGrey) !important;
+}
+
+.leafNodeBase {
+  stroke: var(--darkGrey) !important;
 }
 

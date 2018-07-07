@@ -24,6 +24,24 @@
   min-width: 160px
 }
 
+.card-result-num {
+  color:var(--oro);
+  margin: auto;
+  margin-bottom: 0;
+}
+
+.cards-wrapper:nth-child(-n+2) .card-result-num {
+  color:var(--marino);
+}
+
+.card-result-num:after {
+  content: "citazioni";
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  color: var(--darkGrey);
+  margin-top: -20px;
+}
 .card-bottone {
   position: absolute;
   bottom: 0.7rem;
@@ -40,6 +58,10 @@
   transform: rotate(-180deg);
   width: 10px;
   margin-top: 80%;
+}
+
+.card-result-num {
+  font-size: 90px;
 }
 
 .card-icon:hover {
