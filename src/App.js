@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link, Redirect } from 'react-router-dom';
+import { Route, Link, Redirect, Switch } from 'react-router-dom';
 import './css/App.css';
 import Sidebar from './components/Sidebar';
 
@@ -14,6 +14,7 @@ import TrendHashtag from './components/hashtag/TrendHashtag';
 import NetworkHashtag from './components/hashtag/NetworkHashtag';
 import ChordHashtag from './components/hashtag/ChordHashtag';
 import HierarchyHashtag from './components/hashtag/HierarchyHashtag';
+import NotFound from './components/notFound';
 
 const fakeAuth = {
   isAuthenticated: false,
@@ -51,15 +52,18 @@ class App extends Component {
           path="/login"
           render={() => <Login fakeAuth={fakeAuth} />}
         /> */}
-        <Route exact path="/" component={Homepage} />
-        <Route exact path="/account/trend" component={TrendAccount} />
-        <Route exact path="/account/network" component={NetworkAccount} />
-        <Route exact path="/account/hierarchy" component={HierarchyAccount} />
-        <Route exact path="/account/chord" component={ChordAccount} />
-        <Route exact path="/hashtag/trend" component={TrendHashtag} />
-        <Route exact path="/hashtag/network" component={NetworkHashtag} />
-        <Route exact path="/hashtag/hierarchy" component={HierarchyHashtag} />
-        <Route exact path="/hashtag/chord" component={ChordHashtag} />
+        <Switch>
+          <Route exact path="/" component={Homepage} />
+          <Route exact path="/account/trend" component={TrendAccount} />
+          <Route exact path="/account/network" component={NetworkAccount} />
+          <Route exact path="/account/hierarchy" component={HierarchyAccount} />
+          <Route exact path="/account/chord" component={ChordAccount} />
+          <Route exact path="/hashtag/trend" component={TrendHashtag} />
+          <Route exact path="/hashtag/network" component={NetworkHashtag} />
+          <Route exact path="/hashtag/hierarchy" component={HierarchyHashtag} />
+          <Route exact path="/hashtag/chord" component={ChordHashtag} />
+          <Route exact component={NotFound} />
+        </Switch>
 
         {/* <PrivateRoute exact path="/" component={Homepage} />
         <PrivateRoute exact path="/account/trend" component={TrendAccount} />
