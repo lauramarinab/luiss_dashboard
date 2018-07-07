@@ -15,6 +15,7 @@ class Homepage extends Component {
   }
 
   render() {
+    console.log(this.props.location);
     return (
       <div className="container-homepage ">
         <h2 className="homepage-title">
